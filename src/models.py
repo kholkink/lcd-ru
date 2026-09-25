@@ -9,6 +9,7 @@ W = codes * scale (one rounding to bf16, identical to compressed-tensors' dequan
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import torch
@@ -29,9 +30,15 @@ def load_tokenizer(model_id: str):
     return tok
 
 
-def load_hf(model_id: str, device: str | torch.device, dtype=torch.bfloat16) -> nn.Module:
+def default_dtype() -> torch.dtype:
+    """bf16 everywhere; LCDRU_DTYPE=float32 only for local CPU dry runs (bf16 backward is emulated on this CPU)."""
+    return getattr(torch, os.environ.get("LCDRU_DTYPE", "bfloat16"))
+
+
+def load_hf(model_id: str, device: str | torch.device, dtype: torch.dtype | None = None) -> nn.Module:
     from transformers import AutoModelForCausalLM
 
+    dtype = dtype or default_dtype()
     model = AutoModelForCausalLM.from_pretrained(model_id, dtype=dtype, attn_implementation="sdpa")
     return model.to(device).eval()
 

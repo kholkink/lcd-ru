@@ -1,8 +1,8 @@
-# Local CPU dry run of the smoke pipeline (bug hunting only, numbers meaningless).
+# Local CPU dry run of the smoke pipeline (bug hunting only, numbers meaningless). Run with LCDRU_DTYPE=float32.
 inherit: p0_smoke.yaml
 name: p0_dryrun_cpu
-base: {name: dry-int3ours-qwen2.5-0.5b, calib_n: 4, calib_max_len: 128}
-w4_base: {name: dry-int4ours-qwen2.5-0.5b, calib_n: 4, calib_max_len: 128}
+base: {name: dry-int3ours-qwen2.5-0.5b, calib_n: 32, calib_max_len: 512}   # >= 8k tokens: fewer than hidden dims collapses W3
+w4_base: {name: dry-int4ours-qwen2.5-0.5b, calib_n: 32, calib_max_len: 512}
 train: {n_docs: 2, steps: 4, max_len: 128, ckpt_every: 2, log_every: 2, eval_every: 4, val_n: 2}
 eval:
   batch_size: 2
