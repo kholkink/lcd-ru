@@ -1,0 +1,59 @@
+{
+  "model": "Qwen/Qwen2.5-3B",
+  "results": {
+    "english": {
+      "fp16_ppl": 13.71,
+      "quant_ppl": 18.56,
+      "corrected_ppl": 18.56,
+      "recovery_pct": 0.0
+    },
+    "arabic": {
+      "fp16_ppl": 7.99,
+      "quant_ppl": 34.91,
+      "corrected_ppl": 13.7,
+      "recovery_pct": 78.79
+    },
+    "japanese": {
+      "fp16_ppl": 11.26,
+      "quant_ppl": 34.21,
+      "corrected_ppl": 18.22,
+      "recovery_pct": 69.67
+    },
+    "chinese": {
+      "fp16_ppl": 13.1,
+      "quant_ppl": 31.31,
+      "corrected_ppl": 18.35,
+      "recovery_pct": 71.17
+    },
+    "hindi": {
+      "fp16_ppl": 4.49,
+      "quant_ppl": 12.26,
+      "corrected_ppl": 5.84,
+      "recovery_pct": 82.63
+    },
+    "russian": {
+      "fp16_ppl": 5.9,
+      "quant_ppl": 12.51,
+      "corrected_ppl": 8.74,
+      "recovery_pct": 57.03
+    },
+    "french": {
+      "fp16_ppl": 10.0,
+      "quant_ppl": 16.39,
+      "corrected_ppl": 13.95,
+      "recovery_pct": 38.18
+    },
+    "spanish": {
+      "fp16_ppl": 9.45,
+      "quant_ppl": 15.15,
+      "corrected_ppl": 13.12,
+      "recovery_pct": 35.61
+    },
+    "korean": {
+      "fp16_ppl": 7.98,
+      "quant_ppl": 27.85,
+      "corrected_ppl": 12.98,
+      "recovery_pct": 74.84
+    }
+  }
+}

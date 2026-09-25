@@ -1,0 +1,7 @@
+default_stage:
+  default_modifiers:
+    GPTQModifier:
+      sequential_targets: [Qwen2DecoderLayer]
+      scheme: W3A16
+      targets: Linear
+      ignore: [lm_head]

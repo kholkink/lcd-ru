@@ -1,0 +1,69 @@
+{
+  "experiment": "rank_ablation",
+  "model": "Qwen/Qwen2.5-3B",
+  "steps": 500,
+  "lr": 0.0005,
+  "languages": [
+    "arabic",
+    "japanese"
+  ],
+  "ranks": [
+    1,
+    2,
+    4
+  ],
+  "param_counts_per_language": {
+    "1": 1870848,
+    "2": 3741696,
+    "4": 7483392
+  },
+  "results": {
+    "1": {
+      "arabic": {
+        "corrected_ppl": 12.770268339748556,
+        "recovery_pct": 79.58,
+        "fp16_ppl": 7.99,
+        "int3_ppl": 31.40096982066538
+      },
+      "japanese": {
+        "corrected_ppl": 15.949749952402309,
+        "recovery_pct": 74.26,
+        "fp16_ppl": 11.26,
+        "int3_ppl": 29.480070780665912
+      }
+    },
+    "2": {
+      "arabic": {
+        "corrected_ppl": 12.766074540379126,
+        "recovery_pct": 79.6,
+        "fp16_ppl": 7.99,
+        "int3_ppl": 31.40096982066538
+      },
+      "japanese": {
+        "corrected_ppl": 15.930286097910768,
+        "recovery_pct": 74.37,
+        "fp16_ppl": 11.26,
+        "int3_ppl": 29.480070780665912
+      }
+    },
+    "4": {
+      "arabic": {
+        "corrected_ppl": 12.80472993731884,
+        "recovery_pct": 79.43,
+        "fp16_ppl": 7.99,
+        "int3_ppl": 31.40096982066538
+      },
+      "japanese": {
+        "corrected_ppl": 15.950770285429712,
+        "recovery_pct": 74.25,
+        "fp16_ppl": 11.26,
+        "int3_ppl": 29.480070780665912
+      }
+    }
+  },
+  "summary": {
+    "1": 76.92,
+    "2": 76.98,
+    "4": 76.84
+  }
+}

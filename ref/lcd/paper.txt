@@ -1,0 +1,870 @@
+Language-Conditional Dequantization: Recovering What Quantization
+Steals from Non-English Languages
+Nirmal Thomas
+Prathama International
+Abstract
+Aggressive quantization disproportionately
+harms multilingual capability: in the sub-
+4B INT3 GPTQ regime, we measure 2–4×
+larger perplexity degradation on non-English
+languages than on English. We propose
+Language-Conditional Dequantization (LCD),
+a post-hoc method that attaches per-language
+rank-2 LoRA corrections to the linear lay-
+ers of an already-quantized model, adding
+0.12% parameters per language and training
+in under 20 minutes on a single GPU. Across
+Qwen2.5-3B and Llama-3.2-3B, LCD recov-
+ers 70–83% of the perplexity gap for non-
+Latin-script languages and 17–28% of the
+GlobalMMLU accuracy gap, outperforming
+a language-agnostic correction of equal ca-
+pacity by 3–9 points on typologically distant
+languages and a data-free low-rank baseline
+(LQER) by an order of magnitude. We fur-
+ther identify aperplexity–accuracy disconnect
+and trace it towherequantization concentrates
+damage: early-depth errors (Llama) propagate
+downstream and resist local correction, while
+late-depth errors (Qwen) do not. A layer-
+restricted variant of LCD validates this mech-
+anism directly.
+1 Introduction
+Quantized large language models serve billions of
+queries daily across the world’s languages. When
+a Korean user queries a 3-bit quantized model,
+they receive measurably worse outputs than an En-
+glish user, not because the original model lacked
+Korean ability, but because the quantization pro-
+cess was calibrated exclusively on English data. In
+this paper, we quantify the severity of this gap in
+the regime where quantization is most needed: on
+Qwen2.5-3B, INT3 GPTQ degrades Arabic per-
+plexity by 4.37×and Japanese by 3.04×, com-
+pared to just 1.35×for English; on Llama-3.2-3B
+the pattern repeats (Arabic 3.65×, English 1.39×).
+In the sub-4B INT3 regime, this is a practically
+consequential, language-dependent quality gap.
+Multilingual calibration (Chimoto et al.,
+2026) addresses the root cause but requires
+re-quantization, which is impractical for already-
+deployed models. Static error correction methods
+(LQER (Zhang et al., 2024), RILQ (Lee et al.,
+2025a), ResQ (Saxena et al., 2025)) add low-rank
+residuals post-hoc but apply the same correction
+regardless of input language. Input-conditional
+methods like BinaryMoS (Jo et al., 2024) adapt
+weights to the input but target binarization and
+ignore language identity.
+We propose Language-Conditional Dequantiza-
+tion (LCD), built on a simple insight:if quantiza-
+tion error is language-dependent, the correction
+should be too. For each linear layer in a quantized
+model, LCD attaches a per-language rank-raddi-
+tive correction via forward hooks:
+ˆy=Wqx+ 1
+r (Aℓ·B ℓ)·x(1)
+whereA ℓ ∈R dout×r andB ℓ ∈R r×din are
+language-specific correction matrices. With rank
+r= 2, this adds only 0.12% parameters per lan-
+guage. Corrections are trained on 256 samples
+of language-specific text in under 20 minutes per
+language on a single GPU. At inference time, the
+appropriate correction is selected based on the in-
+put language, requiring no modification to the base
+model architecture.
+Our contributions are:
+1. We characterize the multilingual degradation
+caused by English-calibrated INT3 GPTQ on
+two sub-4B models (Qwen2.5-3B, Llama-
+3.2-3B), quantifying per-language perplexity
+ratios from 1.35×(English) to 4.37×(Ara-
+bic). While the broad phenomenon is known
+(Marchisio et al., 2024), we pin down its
+magnitude in the specific regime where ag-
+gressive quantization is most needed for de-
+1
+arXiv:2608.11786v1  [cs.CL]  12 Aug 2026
+
+=====PAGE=====
+
+ployment, motivating the need for language-
+conditional correction.
+2. We propose LCD, a post-hoc method that re-
+covers 70–83% of the perplexity gap for non-
+Latin-script languages at 0.12% parameter
+cost per language, without re-quantization.
+3. We show that the per-language condition-
+ing captures real language-specific signal: a
+language-agnostic rank-2 baseline matches
+per-LCD on average but trails by 3–9 points
+on the typologically distant languages where
+per-language corrections have the most signal
+to exploit.
+4. We reveal aperplexity–accuracy disconnect
+and trace it to a structural cause: a per-layer
+error analysis shows that quantization con-
+centrates damage in different network depths
+across models (Qwen: late; Llama: early-
+middle). Wevalidate and probethis mech-
+anism: LCD restricted to Llama’s bottom
+half of transformer blocks outperforms uni-
+form correction by 10 pp at half the param-
+eter cost (Table 6); precision-targeting of the
+exact worst-error layers (7–14) does not fur-
+ther improve over uniform, indicating that
+broad early-depth coverage, rather than nar-
+row layer allocation, is the operative mecha-
+nism.1
+2 Related Work
+Multilingual Quantization Harm.Marchisio
+et al. (2024) documented that quantization dispro-
+portionately degrades non-English performance,
+particularly for non-Latin-script languages. Borg-
+ersen and Goodwin (2025) found no such harm
+for k-quantized Llama-3.3-70B, but their 70B
+moderate-quantization regime differs qualitatively
+from the sub-4B INT3 setting where redundancy
+is scarce. Chimoto et al. (2026) addressed the root
+cause by using multilingual calibration data during
+GPTQ, but this requires re-quantization and can-
+not be applied to already-deployed models. LCD
+is complementary: it operates post-hoc.
+Quantization Error Correction.Prior work on
+low-rank error correction splits on a single axis:
+at-quantization-timevs.post-hoc. LRQ (Lee
+et al., 2025b), OmniQuant (Shao et al., 2024),
+1Code:https://anonymous.4open.science/
+r/LCD-2466
+LQER (Zhang et al., 2024), QERA (Zhang et al.,
+2025), RILQ (Lee et al., 2025a), and ResQ (Sax-
+ena et al., 2025) all require access to the quan-
+tization pipeline and produce language-agnostic
+corrections. Recover-LoRA (Das et al., 2025) is
+the closest prior work: it trains LoRA adapters
+post-hoc on a pre-quantized model to recover lost
+accuracy. LCD extends this post-hoc paradigm
+with language-conditionalselection: each lan-
+guage receives a dedicated adapter that special-
+izes to its quantization-error profile. To our knowl-
+edge, LCD is the only post-hoc method that is also
+language-conditional.
+Input-Conditional Adaptation.BinaryMoS
+(Jo et al., 2024) uses token-adaptive scaling for
+binarized models; MLAS-LoRA (Dong et al.,
+2025) applies language-aware LoRA for multilin-
+gual fine-tuning (not quantization repair). LCD
+occupies the language-level position on the input-
+conditionality spectrum and targets a distinct
+problem: correcting systematic quantization error
+concentrated in specific language distributions.
+3 Method
+3.1 Language-Conditional Correction
+For each linear layer and each languageℓ, we de-
+fine a rank-radditive correction:
+ycorrected =W qx+ 1
+r AℓBℓx(2)
+whereA ℓ∈R dout×r andB ℓ∈R r×din are learn-
+able parameters and1/ris a fixed scaling con-
+stant. We initializeA ℓ =0andB ℓ∼N(0,0.01),
+ensuring the correction is exactly zero at initializa-
+tion. This follows the LoRA parameterization (Hu
+et al., 2022) but serves a fundamentally different
+purpose: rather than adapting the model to a new
+task, we arecorrecting systematic quantization er-
+rorfor a specific language distribution.
+Corrections are implemented as
+forward hooks on each linear layer (excluding
+lm headandembed tokens), requiring no
+modification to the model architecture or forward
+pass.
+3.2 Training
+Each language is trained independently. Given
+a set ofN= 256text samples from the target
+language (sourced from mC4/C4), we minimize
+the standard language modeling loss with only the
+2
+
+=====PAGE=====
+
+correction parameters{A ℓ, Bℓ}trainable:
+Lℓ =−
+X
+t
+logP(x t|x<t;W q, Aℓ, Bℓ)(3)
+We use AdamW with learning rate5×10−4, co-
+sine decay with 10% warmup, weight decay 0.01,
+gradient clipping at 1.0, and train for 500 steps
+per language. All base model parameters remain
+frozen. Training takes approximately 15–20 min-
+utes per language on a single L4 GPU, so cov-
+ering all eight non-English languages costs un-
+der 3 GPU-hours in total. Each trained correction
+ships as a∼7 MB delta on top of theunchanged
+deployed checkpoint; by contrast, re-quantizing
+with multilingual calibration requires curating per-
+language calibration data, re-running the quanti-
+zation pipeline, and redistributing the full multi-
+gigabyte model artifact.
+3.3 Inference
+At inference time, the input language is identified
+(via locale, automatic detection, or explicit spec-
+ification) and the corresponding correction slot is
+activated via a single index. In many deployments
+the language is already known from the user lo-
+cale or product surface; when it is not, off-the-
+shelf language identification (e.g., fastText LID)
+classifies a prompt in well under a millisecond,
+negligible relative to a single decoding step of the
+LLM itself. The base quantized model resides in
+memory once; language switching requires only
+updating the active adapter index, with no model
+reloading. ForKlanguages with rankr= 2, total
+overhead isK×0.12%additional parameters.
+4 Experimental Setup
+Models.Qwen2.5-3B (Qwen Team, 2024) and
+Llama-3.2-3B (Grattafiori et al., 2024), two sub-
+4B families with distinct tokenizers and training
+distributions.
+Quantization.GPTQ (Frantar et al., 2023)
+W3A16, group size 128, calibrated on 128 English
+C4 samples, replicating the standard English-only
+deployment practice.
+Languages.9 languages: English (baseline),
+Arabic, Japanese, Chinese, Hindi, Russian,
+French, Spanish, Korean.
+Metrics.(1)Perplexityon held-out mC4/C4 (32
+samples/language); degradation ratio and recov-
+ery %. (2)GlobalMMLU accuracy(Singh et al.,
+Qwen2.5-3B Llama-3.2-3B
+LangI/F×vs EN I/F×vs EN
+English 1.35 – 1.39 –
+Arabic 4.37 3.23 3.65 2.63
+Japanese 3.04 2.25 2.79 2.01
+Chinese 2.39 1.77 2.89 2.07
+Hindi 2.73 2.02 2.14 1.54
+Russian 2.12 1.57 2.39 1.72
+French 1.64 1.21 1.71 1.23
+Spanish 1.60 1.19 1.66 1.20
+Korean 3.49 2.58 3.00 2.16
+Table 1: Perplexity degradation ratios after INT3
+GPTQ quantization. I/F = INT3/FP16 ratio (mC4/C4
+held-out, 32 samples/lang); “vs EN” is the ratio of each
+language’s degradation to English’s.
+2024) via log-likelihood over≈14,040 items per
+language (57 subjects).
+Baselines.FP16 (unquantized), INT3 (uncor-
+rected), INT3+LCD (corrected). English is the
+calibration language and excluded from correction
+training.
+5 Results
+5.1 INT3 Quantization Disproportionately
+Harms Non-English
+Table 1 presents the perplexity degradation ra-
+tios across languages; the underlying absolute per-
+plexities for every condition are given in Ap-
+pendix A. On Qwen2.5-3B, English degrades by
+1.35×, while Arabic degrades by 4.37×, Korean
+by 3.49×, and Japanese by 3.04×(a relative dis-
+parity of 2.3–3.2×). The pattern is consistent on
+Llama-3.2-3B, confirming that the effect is not
+model-specific. Languages with non-Latin scripts
+and greater typological distance from English ex-
+hibit the largest degradation; Romance languages
+(French, Spanish) suffer only modest additional
+harm beyond English.
+5.2 LCD Recovers Most of the Perplexity
+Gap
+Table 2 shows the perplexity recovery results.
+LCD recovers 70–83% of the quantization gap
+for non-Latin-script languages (Arabic, Japanese,
+Chinese, Korean) on both models. Recovery is
+lower for Latin-script languages close to English
+(French 38%/54%, Spanish 36%/52%), consis-
+tent with these languages suffering less language-
+specific quantization error for LCD to correct.
+These figures are robust to the random seed: re-
+training all corrections under three seeds and re-
+3
+
+=====PAGE=====
+
+Lang Qwen Llama Script
+Arabic 78.8 80.1 Arabic
+Japanese 69.7 72.9 CJK
+Chinese 71.2 76.4 CJK
+Korean 74.8 76.7 Hangul
+Hindi 82.6 68.6 Devanagari
+Russian 57.0 71.7 Cyrillic
+French 38.2 53.8 Latin
+Spanish 35.6 52.2 Latin
+Avg (non-EN) 63.5 69.1
+Avg (non-Latin) 72.4 74.4
+Table 2: Perplexity recovery (%): fraction of the
+INT3→FP16 gap closed by LCD. Green:≥70%. En-
+glish is excluded from correction training as it is the
+calibration language.
+Language Per-lang Agnostic∆
+Arabic 78.8 69.9+8.9
+Japanese 69.7 62.7+7.0
+Korean 74.8 71.9+3.0
+French 38.2 54.0−15.8
+Average 65.4 64.6+0.8
+Table 3: Per-language vs. language-agnostic rank-2
+LoRA on Qwen2.5-3B (perplexity recovery %). Av-
+erages are near-identical, but per-language wins by 3–9
+points on typologically distant languages and loses 16
+points on French, where no distinct per-language sig-
+nal exists.∆= per-language−agnostic (percentage
+points).
+evaluating on a fixed 256-sample held-out set
+changes per-language recovery by at most±1.3
+percentage points (standard deviation), so the re-
+sults are not an artifact of a single seed.
+5.3 Language-Specific vs. Language-Agnostic
+Correction
+A natural question is whether per-language con-
+ditioning is necessary, or whether a single shared
+rank-2 LoRA trained on mixed multilingual data
+would suffice. Table 3 compares LCD against
+a language-agnostic baseline (same rank, same
+training budget, training data pooled across four
+target languages) on Qwen2.5-3B.
+On average the two methods are nearly identical
+(65.4% vs. 64.6%), but the per-language break-
+down is revealing: the per-language correction
+wins by 3–9 points on Arabic, Japanese, and Ko-
+rean (precisely the languages whose distribution
+is most distant from the English calibration set)
+and loses 16 points on French. This pattern con-
+firms that per-language conditioning captures gen-
+uine language-specific signal where such signal
+Method (rank-2) PPL MMLU
+LQER (data-free) 5.5 13.0
+LCD (per-language)63.5 27.8
+Table 4: LCD vs. LQER (Zhang et al., 2024) on
+Qwen2.5-3B at matched rank-2 budget: non-English
+average recovery (%) of the INT3→FP16 gap, for per-
+plexity (PPL) and GlobalMMLU (MMLU).
+exists in the data; on French, where the quanti-
+zation error is closer to English’s, a shared cor-
+rection trained on a multilingual mixture transfers
+better than a French-specific one estimated from
+256 samples of French text alone. We interpret the
+near-tie on average as a sharpening, not a weaken-
+ing, of the central claim: LCD is a faithful correc-
+tion of language-specific quantization error, not a
+free lunch that helps every language.
+Comparison to data-free error reconstruc-
+tion (LQER).A stronger, principled baseline is
+LQER (Zhang et al., 2024), which reconstructs the
+quantization error with a rank-rtruncated SVD of
+Wfp16−W q at each layer: low-rank like LCD,
+butdata-free,untrained, and language-agnostic.
+At the identical rank-2 budget on Qwen2.5-3B
+(Table 4), LQER recovers only 5.5% of the per-
+plexity gap and 13.0% of the GlobalMMLU gap
+(non-English averages), versus 63.5% and 27.8%
+for LCD; LQER is even negative on several
+languages (e.g. Russian,−40%perplexity). A
+static SVD of the weight error cannot capture
+the input-dependent, language-specific component
+that LCD learns from data. This is the sharpest
+statement of our claim: at matched parameter bud-
+get, atrained, language-conditionalcorrection re-
+covers an order of magnitude more of the perplex-
+ity gap than adata-free, agnosticone.
+5.4 Recovery Correlates with Typological
+Distance
+Recovery correlates with typological distance
+from English: non-Latin-script languages (Arabic,
+Japanese, Chinese, Korean) cluster at the top (70–
+83%), while Latin-script languages close to En-
+glish (French, Spanish) cluster at the bottom (36–
+54%), with Hindi and Russian in between. This
+ordering is consistent across both models and con-
+firms that LCD corrects calibration–distribution
+mismatch: the further a language’s activation
+statistics lie from English, the more concentrated
+the quantization error and the more LCD has to
+4
+
+=====PAGE=====
+
+recover.
+5.5 Rank Ablation
+We trained LCD corrections on Qwen2.5-3B at
+ranks 1, 2, and 4 (Arabic and Japanese, 500 steps,
+lr= 5×10 −4). The average recovery across the
+two languages was 76.92% (r=1), 76.98% (r=2),
+and 76.84% (r=4). Rank is not the bottleneck: the
+gap from rank 1 to rank 4 is within 0.1 points, in-
+dicating that the correction subspace is effectively
+one-dimensional on these languages. We adopt
+r= 2as a small safety margin; a rank-1 deploy-
+ment would halve parameter overhead to 0.06%
+per language without measurable degradation.
+5.6 Downstream Transfer: The
+Perplexity–Accuracy Disconnect
+Table 5 presents GlobalMMLU accuracy across
+conditions. INT3 quantization severely degrades
+accuracy on both models (Qwen: 64.7→41.8%
+English; Llama: 55.5→39.9%).
+On Qwen2.5-3B, LCD delivers consistent ac-
+curacy gains across every non-English language.
+The largest improvements are Chinese (+9.1
+points), Spanish (+6.7), Russian (+6.2), and
+Japanese (+6.0); Arabic, French, and Korean also
+gain between 3.5 and 7.8 points. Across the eight
+non-English languages, LCD closes an average of
+28% of the FP16→INT3 accuracy gap.
+On Llama-3.2-3B, LCD also improves every
+non-English language, but the gains are smaller,
+between 1.1 points (Chinese, Korean) and 3.5
+points (Russian), closing an average of only 17%
+of the gap. Thisperplexity–accuracy disconnect
+is the paper’s most scientifically informative find-
+ing: Llama’s perplexity recovery (avg 69%) ex-
+ceeds Qwen’s (avg 63%), yet its MMLU recovery
+lags substantially. Section 5.7 diagnoses this gap
+using a third measurement, distinct from both per-
+plexity and task accuracy: per-layer activation er-
+ror, which revealswherein the network quantiza-
+tion concentrates its damage and why that location
+determines whether perplexity recovery translates
+into downstream gains.
+5.7 Diagnosing the Disconnect: Where
+Quantization Hurts
+To understand the perplexity–accuracy disconnect
+mechanistically, we measure the relative Frobe-
+nius error∥y fp16−y int3∥F /∥yfp16∥F for every lin-
+ear layer’s output activations, separately for each
+language. Figure 1 shows the resulting heatmaps.
+Two structural findings explain the disconnect.
+First, the highest-error layers in both models are
+o projanddown proj, the compression bot-
+tlenecks that project from a larger intermedi-
+ate space back to the hidden dimension, where
+GPTQ’s per-channel grid is least faithful. Sec-
+ond, and more consequentially, thedepthof these
+worst-error layers differs sharply: Qwen2.5-3B’s
+top-10 lie in indices 18–30 of 36 (late); Llama-
+3.2-3B’s lie in indices 7–14 of 28 (early-middle),
+with 14+ downstream layers consuming their cor-
+rupted output.
+This depth asymmetry explains the disconnect
+directly. Late-layer errors (Qwen) primarily dis-
+tort final next-token logits, which perplexity mea-
+sures and LCD fixes locally. Early-middle errors
+(Llama) distort intermediate representations that
+feed into downstream attention and MLP opera-
+tions, exactly the multi-step computation MMLU
+requires. A rank-2 hook corrects a layer’s imme-
+diate output but cannot undo propagated upstream
+corruption. Quantization damage thus operates at
+two levels:distributional(perplexity, correctable
+regardless of depth) andrepresentational(down-
+stream accuracy, correctable only when error is
+near the output). The representational reading also
+predicts a scale effect: larger models carry more
+redundancy, so INT3 should inflict less represen-
+tational damage and leave less for LCD to recover;
+our Qwen2.5-7B experiment (Limitations) bears
+this out, with non-English MMLU recovery falling
+to 8.5% and higher-capacity corrections overfit-
+ting.
+Direct validation: targeting the worst-error
+depth band.The depth-asymmetry hypothesis
+predicts that, for each model, restricting LCD’s
+correction to the half of the network containing
+the worst-error layers should match or exceed uni-
+form correction; restricting it to the opposite half
+should underperform. We test this by training
+LCD (rankr= 2, identical hyperparameters)
+under three layer-coverage configurations on the
+four languages with the largest INT3 degradation:
+(i)ALLlayers (the default); (ii)BOTTOM-HALFof
+transformer blocks (covering Llama’s worst-error
+band at indices 7–14); (iii)TOP-HALFof trans-
+former blocks (covering Qwen’s worst-error band
+at indices 18–30). Table 6 reports the resulting
+perplexity recovery.
+On Llama,BOTTOM-HALFexceeds uniform
+ALLby 10 pp and beatsTOP-HALFby 43 pp on av-
+5
+
+=====PAGE=====
+
+Model Cond EN AR JA ZH HI RU FR ES KO
+Qwen2.5-3B
+FP1664.7 ±0.4 48.7±0.4 52.1±0.4 59.5±0.4 38.9±0.4 53.9±0.4 56.7±0.4 57.7±0.4 50.0±0.4
+INT341.8 ±0.4 28.0±0.4 30.7±0.4 35.4±0.4 26.3±0.4 29.6±0.4 33.3±0.4 35.0±0.4 28.1±0.4
+LCD41.8 ±0.4 31.5‡
+±0.4 36.7‡
+±0.4 44.5‡
+±0.4 28.3‡
+±0.4 35.8‡
+±0.4 40.0‡
+±0.4 41.7‡
+±0.4 35.9‡
+±0.4
+Llama-3.2-3B
+FP1655.5 ±0.4 39.9±0.4 41.6±0.4 44.7±0.4 38.3±0.4 44.4±0.4 48.2±0.4 48.7±0.4 41.1±0.4
+INT339.9 ±0.4 28.5±0.4 30.4±0.4 31.7±0.4 28.4±0.4 31.2±0.4 34.3±0.4 32.9±0.4 30.1±0.4
+LCD39.9 ±0.4 31.4‡
+±0.4 31.9†
+±0.4 32.8†
+±0.4 30.3†
+±0.4 34.7‡
+±0.4 35.9±0.4 35.7‡
+±0.4 31.2±0.4
+Table 5: GlobalMMLU accuracy (%) across nine languages. Subscripts show binomial SE (
+p
+p(1−p)/n,n≈
+14,040). Significance vs. INT3: †p <0.05, ‡p <0.001(pairedt-test across 57 subjects, df = 56).Bold: LCD gain
+≥5 pp over INT3. Qwen closes 28% of the FP16→INT3 gap (non-EN avg); Llama closes 17%.
+Figure 1: Per-layer relative INT3 quantization error by language. Top: Qwen2.5-3B. Bottom: Llama-3.2-3B. Each
+column is one linear layer; columns are sorted attention-then-MLP, shallow-to-deep within each block. Color
+indicates∥y fp16−y int3∥F /∥yfp16∥F averaged over 32 samples per language. The worst-error layers are the “com-
+pression” projections (o proj,down proj) in both models, but theirdepthdiffers: Qwen’s hotspots cluster in
+layers 18–30 (out of 36), while Llama’s cluster in layers 7–14 (out of 28).
+Model Strategy AR JA ZH KO
+Qwen2.5-3B
+all 84.6 77.3 18.9 81.8
+bottom-half 74.4 70.2 3.8 73.1
+top-half 78.6 68.2−1.9 70.5
+Llama-3.2-3B
+all 71.9 71.0 21.8 70.2
+bottom-half 78.5 83.3 36.1 78.3
+top-half 40.2 45.6−20.2 37.6
+Table 6: Perplexity recovery (%) for LCD under three
+layer-coverage configurations, all at rankr= 2and
+identical training.BOTTOM-HALFcovers Llama’s
+worst-error band (indices 7–14) and recovers more than
+uniformALLon every Llama language despite using
+half the parameters. On Qwen, whose worst layers (18–
+30) span a larger fraction of the network,ALLdomi-
+nates and the two halves are not differentiated.
+erage, obtaining better recovery at half the param-
+eters. On Qwen, the two halves are indistinguish-
+able and both trailALL, consistent with its worst-
+error layers spanning a broad 40% band where
+any half-subset misses some hotspots. The depth
+asymmetry is visible precisely because Llama’s
+worst layers (25% of the network) are entirely con-
+tained in one half and absent from the other.
+Critically, this perplexity advantage doesnot
+reach downstream accuracy. Evaluated on Glob-
+alMMLU, Llama’sBOTTOM-HALFLCD recov-
+ers only 9.5% of the accuracy gap, versus 17%
+for uniformALL(thereverseof the perplexity or-
+dering). Concentrating capacity where thedis-
+tributionalerror is largest (the early compression
+band) actively trades awayrepresentationalrecov-
+ery. This double dissociation (bottom-half wins
+on perplexity but loses on MMLU) is the strongest
+evidence that the two levels of quantization dam-
+age are governed by distinct mechanisms, and
+that perplexity recovery is an unreliable proxy for
+downstream gains.
+Negative result: narrow layer targeting does
+not improve further.We follow up by test-
+ing whether concentrating correctionsspecifically
+6
+
+=====PAGE=====
+
+on layers 7–14 with additional rank yields fur-
+ther gains. Three configurations are evaluated:
+UNIFORM-R2 (rank-2, all layers),TARGETED-R4
+(rank-4, layers 7–14 only), andTARGETED-R2
+(rank-2, layers 7–14 only).UNIFORM-R2 achieves
+45.0% average recovery; both targeted variants
+reach only 37%, andTARGETED-R4≈TARGETED-
+R2 (37.0% vs. 37.1%) rules out rank as an ex-
+planatory factor. The bottom-half advantage thus
+comes from broad coverage of the early depth
+band (layers 0–13 as a whole) rather than precise
+targeting of the identified hotspot. When correc-
+tion capacity is limited,broadearly-depth cover-
+age dominates narrow layer allocation.
+6 Conclusion
+We have shown that English-calibrated INT3
+quantization creates a systematic, language-
+dependent quality gap that disproportionately
+harms non-English users. LCD demonstrates that
+this gap is largely correctable: rank-2 correc-
+tions at 0.12% parameter cost per language re-
+cover 70–83% of the perplexity degradation for
+non-Latin-script languages across two model fam-
+ilies, and 17–28% of the GlobalMMLU accuracy
+gap. A language-agnostic baseline with the same
+capacity matches per-LCD on average but trails
+by 3–9 points on the typologically distant lan-
+guages where language-specific signal is concen-
+trated: evidence that LCD is a faithful correction
+of language-specific quantization error rather than
+a generic fine-tune.
+Our analysis further reveals that perplexity re-
+covery does not reliably translate to downstream
+accuracy: Llama’s higher perplexity recovery
+yields smaller MMLU gains than Qwen’s. A per-
+layer error analysis traces this to depth asymme-
+try: Llama’s worst-error layers sit early-middle in
+the network, propagating corruption downstream,
+while Qwen’s sit late. Restricting LCD to Llama’s
+bottom half confirms this (+10 pp over uniform),
+yet precision-targeting of layers 7–14 specifically
+does not help further (37% vs. 45%), establishing
+that broad early-depth coverage, not narrow layer
+allocation, is the operative mechanism.
+The broader implication is practical:quantiza-
+tion need not discriminate. With trivial overhead,
+deployed quantized models can serve non-English
+users more equitably.
+Limitations
+Language identification at inference.LCD re-
+quires the input language to be known at inference
+time so that the correct per-language adapter is ac-
+tivated. In controlled deployment (e.g., a local-
+ized product surface with known user locale) this
+is straightforward, but code-switched inputs, low-
+quality language ID, or mixed-language prompts
+are not directly handled by the current design. A
+soft gating mechanism over adapters, or falling
+back to the language-agnostic adapter when confi-
+dence is low, is a natural extension but is not eval-
+uated here.
+Residual MMLU gap on early-error archi-
+tectures.Section 5.7 attributes LCD’s smaller
+MMLU gains on Llama-3.2-3B to the depth of
+its worst-error layers (indices 7–14 of 28), whose
+corrupted outputs propagate through many down-
+stream blocks. We evaluate a layer-targeted vari-
+ant that concentrates rank-4 corrections exclu-
+sively on these layers, but itunderperformsuni-
+form rank-2 correction (37% vs. 45% perplex-
+ity recovery), indicating that the MMLU gap re-
+flects a structural representational deficit that nar-
+row layer targeting cannot overcome. Allocating
+higher rank specifically to the compression pro-
+jections (o proj,down proj), which carry the
+highest per-layer error in both models, rather than
+to entire transformer blocks, remains an open di-
+rection.
+Narrow quantization regime.We study INT3
+GPTQ with W3A16, group size 128, English C4
+calibration. Other quantization schemes (AWQ,
+GGUF k-quants, SmoothQuant), other bit-widths
+(INT2, INT4, FP4), and other calibration corpora
+may change both the magnitude of the language-
+specific harm and the degree to which a rank-2 cor-
+rection suffices. We expect the qualitative story to
+hold but make no claim beyond the evaluated set-
+ting.
+Model scale and family coverage.Our main
+evaluation uses two sub-4B-parameter models
+(Qwen2.5-3B, Llama-3.2-3B). To probe scale, we
+additionally quantized Qwen2.5-7B to INT3 and
+trained LCD corrections, evaluating on Glob-
+alMMLU. The result is the opposite of a clean
+scale-up: at 7B, rank-2 LCD recovers only 8.5%
+of the non-English accuracy gap (vs. 28% at 3B),
+and raising capacity to rank-4 with 1000 steps
+makeseverylanguage worse (average−3.9%),
+7
+
+=====PAGE=====
+
+as the corrections overfit the 256-sample training
+slice. Crucially, the languages quantization dam-
+ages most still recover at 7B (Korean+4.7pts,
+26.5%; Arabic+2.4pts, 17.0%), while languages
+with small INT3 gaps (Russian, Spanish, French)
+go flat or slightly negative. We read this as consis-
+tent with, not counter to, our central claim: a larger
+model carries more redundancy, so INT3 inflicts
+lessrepresentationaldamage on high-resource
+languages, leaving little language-specific error
+for a correction to recover, and additional capac-
+ity then fits noise. LCD’s downstream benefit is
+therefore damage-dependent and does not auto-
+matically grow with scale; characterizing exactly
+where on the (scale×bit-width) plane the bene-
+fit persists is open. We make no claim about MoE
+architectures or instruction-tuned variants.
+Language coverage and data.Perplexity re-
+covery is measured on 32 mC4/C4 held-out sam-
+ples per language, and MMLU on the Glob-
+alMMLU test set (≈14,040 items per language).
+The eight non-English languages we evaluate
+span four scripts, but they are all relatively
+high-resource. Recovery behavior on truly low-
+resource languages, on dialectal variation, and on
+domain-shifted text (legal, medical, code-mixed)
+is an open question.
+Adapter training data.Each per-language
+adapter is trained on 256 samples of monolingual
+text from that language for 500 steps. This is de-
+liberately small to match the “post-hoc, cheap”
+framing, but it also means the correction is esti-
+mated from a narrow slice of each language’s dis-
+tribution. Larger and more diverse per-language
+data may shift the per-language vs. agnostic com-
+parison, particularly for languages like French
+where the agnostic baseline currently wins.
+Ethical and fairness considerations.LCD is
+intended toreducea fairness gap introduced by
+English-centric calibration. However, because
+the correction is trained on web-scraped multi-
+lingual text, it inherits any biases and quality is-
+sues present in that corpus. We do not audit the
+adapters for language-specific toxicity, factuality,
+or stereotype changes introduced by the correction
+itself; such an audit is necessary before deploying
+LCD in user-facing settings.
+Ethics Statement
+Societal benefit.English-calibrated INT3 quan-
+tization imposes a systematic quality penalty on
+non-English users: perplexity degrades 2.6–3.2×
+more for Arabic and Korean than for English on
+the same model, with no corresponding reduction
+in model size for those users. LCD is designed
+to reduce this disparity. Because corrections train
+on 256 samples in under 20 minutes on a single
+consumer GPU, the method is accessible to re-
+searchers without large-scale compute resources.
+Because it operates post-hoc on already-quantized
+weights, it offers a practical correction path for de-
+ployed models where re-quantization is not an op-
+tion.
+Known limitations and risks.LCD requires
+the input language to be identified at inference
+time. Misidentification activates the wrong per-
+language correction; because the adapters are
+small (0.12% of parameters, initialized near zero),
+the magnitude of harm from a mismatched adapter
+is bounded, but it is not zero and is not character-
+ized in this work. Each adapter is trained on web-
+scraped monolingual text (C4 or mC4). These cor-
+pora carry societal biases, quality skew, and do-
+main imbalance. We do not audit whether the cor-
+rection process amplifies or introduces language-
+specific toxicity, stereotyping, or factual error;
+such an audit is necessary before deploying LCD
+in user-facing systems. Our evaluation covers
+eight non-English languages, all relatively high-
+resource; generalization to endangered or very-
+low-resource languages is untested. Finally, prac-
+titioners should not treat perplexity recovery as a
+proxy for full task recovery: on Llama-3.2-3B,
+69% average perplexity recovery translates to only
+17% MMLU gap recovery.
+Data and compute.All training and evalua-
+tion data (C4, mC4, GlobalMMLU) are publicly
+available. No human subjects were involved and
+no personally identifiable information was used.
+Total compute for the experiments reported in
+this paper was approximately 42 GPU-hours on
+L4/L40S hardware.
+References
+Niklas Borgersen and Morten Goodwin. 2025. En-
+glish k-quantization does not disproportionately di-
+minish multilingual performance. arXiv preprint
+arXiv:2503.03592.
+8
+
+=====PAGE=====
+
+Everlyn Asiko Chimoto, Mostafa Elhoushi, and Bruce
+Bassett. 2026. Calibrating beyond English: Ad-
+dressing multilingual bias in quantization. InPro-
+ceedings of EACL.
+Devleena Das, Rajeev Patwari, and Ashish Sirasao.
+2025. Recover-LoRA: Data-free accuracy recovery
+of degraded language models via low-rank adapta-
+tion. InProceedings of EMNLP (Industry Track).
+ArXiv:2510.08600.
+Tianyu Dong, Bo Li, Jingsong Liu, Shaolin Zhu, and
+Deyi Xiong. 2025. MLAS-LoRA: Language-aware
+parameters detection and LoRA-based knowledge
+transfer for multilingual machine translation. In
+Proceedings of ACL.
+Elias Frantar, Saleh Ashkboos, Torsten Hoefler, and
+Dan Alistarh. 2023. GPTQ: Accurate post-training
+quantization for generative pre-trained transformers.
+ICLR.
+Aaron Grattafiori and 1 others. 2024. The Llama 3 herd
+of models. arXiv preprint arXiv:2407.21783.
+Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan
+Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, and
+Weizhu Chen. 2022. LoRA: Low-rank adaptation of
+large language models.ICLR.
+Dongwon Jo, Taesu Kim, Yulhwa Kim, and Jae-Joon
+Kim. 2024. Mixture of scales: Memory-efficient
+token-adaptive binarization for large language mod-
+els. InNeurIPS. ArXiv:2406.12311.
+Geonho Lee, Janghwan Lee, Sukjin Hong, Minsoo
+Kim, Euijai Ahn, Du-Seong Chang, and Jung-
+wook Choi. 2025a. RILQ: Rank-insensitive LoRA-
+based quantization error compensation for boost-
+ing 2-bit large language model accuracy. InAAAI.
+ArXiv:2412.01129.
+Jung Hyun Lee, Jeonghoon Kim, June Yong Yang,
+Se Jung Kwon, Eunho Yang, Kang Min Yoo, and
+Dongsoo Lee. 2025b. LRQ: Optimizing post-
+training quantization for large language models by
+learning low-rank weight-scaling matrices. InPro-
+ceedings of NAACL-HLT. ArXiv:2407.11534.
+Kelly Marchisio, Saurabh Dash, Hongyu Chen, Den-
+nis Aumiller, Ahmet ¨Ust¨un, Sara Hooker, and Se-
+bastian Ruder. 2024. How does quantization af-
+fect multilingual LLMs? InFindings of EMNLP.
+ArXiv:2407.03211.
+Qwen Team. 2024. Qwen2.5 technical report. arXiv
+preprint arXiv:2412.15115.
+Utkarsh Saxena, Sayeh Sharify, Kaushik Roy, and Xin
+Wang. 2025. ResQ: Mixed-precision quantization
+of large language models with low-rank residuals.
+InICML. ArXiv:2412.14363.
+Wenqi Shao, Mengzhao Chen, Zhaoyang Zhang, Peng
+Xu, Lirui Zhao, Zhiqian Li, Kaipeng Zhang, Peng
+Gao, Yu Qiao, and Ping Luo. 2024. OmniQuant:
+Omnidirectionally calibrated quantization for large
+language models. InICLR. ArXiv:2308.13137.
+Shivalika Singh, Angelika Romanou, Cl´ementine Four-
+rier, and 1 others. 2024. Global MMLU: Un-
+derstanding and addressing cultural and linguistic
+biases in multilingual evaluation. arXiv preprint
+arXiv:2412.03304.
+Cheng Zhang, Jianyi Cheng, George A. Constantinides,
+and Yiren Zhao. 2024. LQER: Low-rank quanti-
+zation error reconstruction for LLMs. InICML.
+ArXiv:2402.02446.
+Cheng Zhang, Jeffrey T. H. Wong, Can Xiao,
+George A. Constantinides, and Yiren Zhao. 2025.
+QERA: An analytical framework for quantization er-
+ror reconstruction. InICLR. ArXiv:2410.06040.
+A Absolute Perplexities
+Tables 1 and 2 report degradation ratios and re-
+covery percentages to normalize across languages
+with very different base perplexities. Table 7
+provides the underlying absolute values (mC4/C4
+held-out, 32 samples per language) for all three
+conditions.
+Qwen2.5-3B Llama-3.2-3B
+LangFP16 INT3 LCD FP16 INT3 LCD
+English 13.71 18.56 – 12.33 17.15 –
+Arabic 7.99 34.91 13.70 11.85 43.31 18.10
+Japanese 11.26 34.21 18.22 15.45 43.17 22.96
+Chinese 13.10 31.31 18.35 14.91 43.03 21.54
+Hindi 4.49 12.26 5.84 5.35 11.44 7.26
+Russian 5.90 12.51 8.74 7.74 18.46 10.77
+French 10.00 16.39 13.95 11.14 19.09 14.81
+Spanish 9.45 15.15 13.12 10.42 17.31 13.71
+Korean 7.98 27.85 12.98 12.92 38.79 18.94
+Table 7: Absolute perplexity per language under each
+condition (mC4/C4 held-out, 32 samples/language).
+English receives no correction, as it is the calibration
+language.
+9

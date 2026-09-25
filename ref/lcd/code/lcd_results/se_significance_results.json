@@ -1,0 +1,186 @@
+{
+  "qwen2.5-3b": {
+    "english": {
+      "fp16_acc": 0.646774,
+      "fp16_se": 0.004034,
+      "int3_acc": 0.417676,
+      "int3_se": 0.004162,
+      "lcd_acc": 0.417676,
+      "lcd_se": 0.004162,
+      "int3_vs_lcd_t": null,
+      "int3_vs_lcd_p": null
+    },
+    "arabic": {
+      "fp16_acc": 0.487106,
+      "fp16_se": 0.004219,
+      "int3_acc": 0.279741,
+      "int3_se": 0.003789,
+      "lcd_acc": 0.314788,
+      "lcd_se": 0.00392,
+      "int3_vs_lcd_t": -5.8671,
+      "int3_vs_lcd_p": 0.0
+    },
+    "japanese": {
+      "fp16_acc": 0.521259,
+      "fp16_se": 0.004216,
+      "int3_acc": 0.307029,
+      "int3_se": 0.003893,
+      "lcd_acc": 0.366712,
+      "lcd_se": 0.004067,
+      "int3_vs_lcd_t": -8.0916,
+      "int3_vs_lcd_p": 0.0
+    },
+    "chinese": {
+      "fp16_acc": 0.594943,
+      "fp16_se": 0.004143,
+      "int3_acc": 0.353632,
+      "int3_se": 0.004035,
+      "lcd_acc": 0.445085,
+      "lcd_se": 0.004194,
+      "int3_vs_lcd_t": -12.1784,
+      "int3_vs_lcd_p": 0.0
+    },
+    "hindi": {
+      "fp16_acc": 0.3886,
+      "fp16_se": 0.004114,
+      "int3_acc": 0.263128,
+      "int3_se": 0.003717,
+      "lcd_acc": 0.282864,
+      "lcd_se": 0.003802,
+      "int3_vs_lcd_t": -4.8386,
+      "int3_vs_lcd_p": 1.1e-05
+    },
+    "russian": {
+      "fp16_acc": 0.538779,
+      "fp16_se": 0.004207,
+      "int3_acc": 0.296418,
+      "int3_se": 0.003854,
+      "lcd_acc": 0.357738,
+      "lcd_se": 0.004045,
+      "int3_vs_lcd_t": -7.4156,
+      "int3_vs_lcd_p": 0.0
+    },
+    "french": {
+      "fp16_acc": 0.567227,
+      "fp16_se": 0.004181,
+      "int3_acc": 0.332716,
+      "int3_se": 0.003976,
+      "lcd_acc": 0.399587,
+      "lcd_se": 0.004133,
+      "int3_vs_lcd_t": -7.8503,
+      "int3_vs_lcd_p": 0.0
+    },
+    "spanish": {
+      "fp16_acc": 0.57735,
+      "fp16_se": 0.004169,
+      "int3_acc": 0.350071,
+      "int3_se": 0.004026,
+      "lcd_acc": 0.416524,
+      "lcd_se": 0.004161,
+      "int3_vs_lcd_t": -9.1445,
+      "int3_vs_lcd_p": 0.0
+    },
+    "korean": {
+      "fp16_acc": 0.500427,
+      "fp16_se": 0.004219,
+      "int3_acc": 0.280943,
+      "int3_se": 0.003793,
+      "lcd_acc": 0.358852,
+      "lcd_se": 0.004048,
+      "int3_vs_lcd_t": -9.4173,
+      "int3_vs_lcd_p": 0.0
+    }
+  },
+  "llama3.2-3b": {
+    "english": {
+      "fp16_acc": 0.554693,
+      "fp16_se": 0.004194,
+      "int3_acc": 0.399231,
+      "int3_se": 0.004133,
+      "lcd_acc": 0.399231,
+      "lcd_se": 0.004133,
+      "int3_vs_lcd_t": null,
+      "int3_vs_lcd_p": null
+    },
+    "arabic": {
+      "fp16_acc": 0.398917,
+      "fp16_se": 0.004133,
+      "int3_acc": 0.284798,
+      "int3_se": 0.003809,
+      "lcd_acc": 0.314432,
+      "lcd_se": 0.003919,
+      "int3_vs_lcd_t": -5.114,
+      "int3_vs_lcd_p": 4e-06
+    },
+    "japanese": {
+      "fp16_acc": 0.416067,
+      "fp16_se": 0.00416,
+      "int3_acc": 0.304394,
+      "int3_se": 0.003883,
+      "lcd_acc": 0.318781,
+      "lcd_se": 0.003933,
+      "int3_vs_lcd_t": -2.3716,
+      "int3_vs_lcd_p": 0.021177
+    },
+    "chinese": {
+      "fp16_acc": 0.447151,
+      "fp16_se": 0.004196,
+      "int3_acc": 0.316667,
+      "int3_se": 0.003926,
+      "lcd_acc": 0.327991,
+      "lcd_se": 0.003962,
+      "int3_vs_lcd_t": -2.4973,
+      "int3_vs_lcd_p": 0.015481
+    },
+    "hindi": {
+      "fp16_acc": 0.382615,
+      "fp16_se": 0.004103,
+      "int3_acc": 0.284361,
+      "int3_se": 0.003808,
+      "lcd_acc": 0.302814,
+      "lcd_se": 0.003878,
+      "int3_vs_lcd_t": -3.4428,
+      "int3_vs_lcd_p": 0.001096
+    },
+    "russian": {
+      "fp16_acc": 0.443701,
+      "fp16_se": 0.004193,
+      "int3_acc": 0.312371,
+      "int3_se": 0.003911,
+      "lcd_acc": 0.346699,
+      "lcd_se": 0.004016,
+      "int3_vs_lcd_t": -4.817,
+      "int3_vs_lcd_p": 1.1e-05
+    },
+    "french": {
+      "fp16_acc": 0.482196,
+      "fp16_se": 0.004217,
+      "int3_acc": 0.342686,
+      "int3_se": 0.004005,
+      "lcd_acc": 0.359137,
+      "lcd_se": 0.004049,
+      "int3_vs_lcd_t": -1.9928,
+      "int3_vs_lcd_p": 0.051167
+    },
+    "spanish": {
+      "fp16_acc": 0.486752,
+      "fp16_se": 0.004218,
+      "int3_acc": 0.329131,
+      "int3_se": 0.003966,
+      "lcd_acc": 0.35698,
+      "lcd_se": 0.004043,
+      "int3_vs_lcd_t": -4.5592,
+      "int3_vs_lcd_p": 2.8e-05
+    },
+    "korean": {
+      "fp16_acc": 0.411337,
+      "fp16_se": 0.004153,
+      "int3_acc": 0.301239,
+      "int3_se": 0.003872,
+      "lcd_acc": 0.311921,
+      "lcd_se": 0.00391,
+      "int3_vs_lcd_t": -1.9205,
+      "int3_vs_lcd_p": 0.05989
+    }
+  }
+}

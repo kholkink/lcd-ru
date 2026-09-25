@@ -1,0 +1,52 @@
+{
+  "experiment": "agnostic_baseline",
+  "model": "Qwen/Qwen2.5-3B",
+  "rank": 2,
+  "steps": 500,
+  "lr": 0.0005,
+  "languages": [
+    "arabic",
+    "japanese",
+    "korean",
+    "french"
+  ],
+  "results": {
+    "arabic": {
+      "fp16_ppl": 7.99,
+      "int3_ppl": 37.88327725373853,
+      "agnostic_ppl": 16.993184396932833,
+      "agnostic_recovery_pct": 69.88,
+      "per_lang_ppl": 13.7,
+      "per_lang_recovery_pct": 78.79
+    },
+    "japanese": {
+      "fp16_ppl": 11.26,
+      "int3_ppl": 37.31054348163152,
+      "agnostic_ppl": 20.980474534040013,
+      "agnostic_recovery_pct": 62.69,
+      "per_lang_ppl": 18.22,
+      "per_lang_recovery_pct": 69.67
+    },
+    "korean": {
+      "fp16_ppl": 7.98,
+      "int3_ppl": 28.3450074103202,
+      "agnostic_ppl": 13.70615483911186,
+      "agnostic_recovery_pct": 71.88,
+      "per_lang_ppl": 12.98,
+      "per_lang_recovery_pct": 74.84
+    },
+    "french": {
+      "fp16_ppl": 10.0,
+      "int3_ppl": 14.455122507706507,
+      "agnostic_ppl": 12.05100181502181,
+      "agnostic_recovery_pct": 53.96,
+      "per_lang_ppl": 13.95,
+      "per_lang_recovery_pct": 38.18
+    }
+  },
+  "summary": {
+    "avg_agnostic_recovery_pct": 64.6,
+    "avg_per_lang_recovery_pct": 65.37,
+    "difference_pp": -0.77
+  }
+}

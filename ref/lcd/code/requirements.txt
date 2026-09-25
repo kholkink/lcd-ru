@@ -1,0 +1,5 @@
+datasets
+llmcompressor
+tqdm
+huggingface_hub
+matplotlib

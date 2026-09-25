@@ -1,0 +1,52 @@
+# ─── Python ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ─── macOS ───────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ─── IDE / tooling ───────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.claude/
+
+# ─── LaTeX ───────────────────────────────────────────────────────────────
+paper/
+wiki/
+
+# ─── Personal working notes (not for public repo) ────────────────────────
+TODO
+
+# ─── Models / large artifacts ────────────────────────────────────────────
+lcd_results/*/quantized/
+lcd_results/logs/
+*.pt
+*.safetensors
+*.bin
+
+# ─── Logs / scratch ──────────────────────────────────────────────────────
+*.log
+events.jsonl
+output.log
+nohup.out
+
+# ─── HuggingFace cache (in case symlinked here) ──────────────────────────
+.cache/
+hub/
+
+#environement variables
+.env

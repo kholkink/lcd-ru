@@ -1,0 +1,19 @@
+# Local CPU dry run of the smoke pipeline (bug hunting only, numbers meaningless).
+inherit: p0_smoke.yaml
+name: p0_dryrun_cpu
+base: {name: dry-int3ours-qwen2.5-0.5b, calib_n: 4, calib_max_len: 128}
+w4_base: {name: dry-int4ours-qwen2.5-0.5b, calib_n: 4, calib_max_len: 128}
+train: {n_docs: 2, steps: 4, max_len: 128, ckpt_every: 2, log_every: 2, eval_every: 4, val_n: 2}
+eval:
+  batch_size: 2
+  ppl:
+    - {split: ppl_lcd_ru_256, n: 2, max_len: 128}
+    - {split: ppl_ru_256, n: 2, max_len: 128}
+    - {split: ppl_en_256, n: 2, max_len: 128}
+    - {split: ppl_wiki_ru_256, n: 2, max_len: 128}
+    - {split: ppl_gazeta_256, n: 2, max_len: 128}
+  kl: {split: val_ru_64, n: 2, max_len: 128, linears: true}
+  mmlu:
+    - {lang: ru, split: dev, n: 8, batch_size: 4}
+    - {lang: en, split: dev, n: 8, batch_size: 4}
+  rublimp: {subsample: rublimp_sub200, n_per: 2}

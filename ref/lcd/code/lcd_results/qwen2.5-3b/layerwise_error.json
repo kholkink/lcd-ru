@@ -1,0 +1,3278 @@
+{
+  "model.layers.0.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 0,
+    "errors": {
+      "english": 0.05674620461650193,
+      "arabic": 0.0921191405504942,
+      "japanese": 0.09818834788165987,
+      "chinese": 0.09434307250194252,
+      "french": 0.0725764122325927,
+      "spanish": 0.07046629441902041,
+      "korean": 0.08718149154447019
+    }
+  },
+  "model.layers.0.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 0,
+    "errors": {
+      "english": 0.008515273671946488,
+      "arabic": 0.01384291989961639,
+      "japanese": 0.014265072124544531,
+      "chinese": 0.013991969841299579,
+      "french": 0.011107877959148027,
+      "spanish": 0.010839633745490573,
+      "korean": 0.012997163634281605
+    }
+  },
+  "model.layers.0.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 0,
+    "errors": {
+      "english": 0.1520917871966958,
+      "arabic": 0.22537621995434165,
+      "japanese": 0.23763955710455775,
+      "chinese": 0.23665000405162573,
+      "french": 0.18864544900134206,
+      "spanish": 0.18288027332164347,
+      "korean": 0.21552755078300834
+    }
+  },
+  "model.layers.0.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 0,
+    "errors": {
+      "english": 0.17374299466609955,
+      "arabic": 0.2509061377495527,
+      "japanese": 0.2724973172880709,
+      "chinese": 0.2746256939135492,
+      "french": 0.20175863057374954,
+      "spanish": 0.1937690358608961,
+      "korean": 0.25480316765606403
+    }
+  },
+  "model.layers.0.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 0,
+    "errors": {
+      "english": 0.2054089824669063,
+      "arabic": 0.2964389258995652,
+      "japanese": 0.3230888620018959,
+      "chinese": 0.32235987577587366,
+      "french": 0.2474711206741631,
+      "spanish": 0.23969339253380895,
+      "korean": 0.3075650567188859
+    }
+  },
+  "model.layers.0.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 0,
+    "errors": {
+      "english": 0.2575163943693042,
+      "arabic": 0.35046206694096327,
+      "japanese": 0.3842887310311198,
+      "chinese": 0.3933032965287566,
+      "french": 0.31181523855775595,
+      "spanish": 0.3033210076391697,
+      "korean": 0.35281428415328264
+    }
+  },
+  "model.layers.0.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 0,
+    "errors": {
+      "english": 0.2499864767305553,
+      "arabic": 0.4173981184139848,
+      "japanese": 0.4177175285294652,
+      "chinese": 0.3905477663502097,
+      "french": 0.34933158103376627,
+      "spanish": 0.3340112194418907,
+      "korean": 0.4269503019750118
+    }
+  },
+  "model.layers.1.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 1,
+    "errors": {
+      "english": 0.0869894502684474,
+      "arabic": 0.14085070742294192,
+      "japanese": 0.14568639802746475,
+      "chinese": 0.13855124870315194,
+      "french": 0.1122021155897528,
+      "spanish": 0.1062496262602508,
+      "korean": 0.14508379250764847
+    }
+  },
+  "model.layers.1.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 1,
+    "errors": {
+      "english": 0.02716570603661239,
+      "arabic": 0.045226993155665696,
+      "japanese": 0.04718921787571162,
+      "chinese": 0.04563113325275481,
+      "french": 0.035708070965483785,
+      "spanish": 0.03381269087549299,
+      "korean": 0.04534440959105268
+    }
+  },
+  "model.layers.1.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 1,
+    "errors": {
+      "english": 0.18615375459194183,
+      "arabic": 0.3107941993512213,
+      "japanese": 0.32820634450763464,
+      "chinese": 0.304793743416667,
+      "french": 0.24928405042737722,
+      "spanish": 0.23688089521601796,
+      "korean": 0.3273401064798236
+    }
+  },
+  "model.layers.1.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 1,
+    "errors": {
+      "english": 0.11812086659483612,
+      "arabic": 0.19291162816807628,
+      "japanese": 0.19753319956362247,
+      "chinese": 0.18717627320438623,
+      "french": 0.1503859751392156,
+      "spanish": 0.14745414210483432,
+      "korean": 0.1939754500053823
+    }
+  },
+  "model.layers.1.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 1,
+    "errors": {
+      "english": 0.11206611432135105,
+      "arabic": 0.12263422249816358,
+      "japanese": 0.12471047532744706,
+      "chinese": 0.1275775006506592,
+      "french": 0.11449255840852857,
+      "spanish": 0.11501889419741929,
+      "korean": 0.12750209379009902
+    }
+  },
+  "model.layers.1.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 1,
+    "errors": {
+      "english": 0.05072203418239951,
+      "arabic": 0.061870836885645986,
+      "japanese": 0.06303143559489399,
+      "chinese": 0.06506948848254979,
+      "french": 0.0549735528184101,
+      "spanish": 0.05515325674787164,
+      "korean": 0.06520996964536607
+    }
+  },
+  "model.layers.1.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 1,
+    "errors": {
+      "english": 0.20225647441111505,
+      "arabic": 0.3360336096957326,
+      "japanese": 0.42176743783056736,
+      "chinese": 0.5149634154513478,
+      "french": 0.2634208332747221,
+      "spanish": 0.26339909015223384,
+      "korean": 0.46055631898343563
+    }
+  },
+  "model.layers.2.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 2,
+    "errors": {
+      "english": 0.10548852826468647,
+      "arabic": 0.1760408147238195,
+      "japanese": 0.1845554350875318,
+      "chinese": 0.17447352223098278,
+      "french": 0.14062387286685407,
+      "spanish": 0.13537331181578338,
+      "korean": 0.18003160343505442
+    }
+  },
+  "model.layers.2.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 2,
+    "errors": {
+      "english": 0.046250883606262505,
+      "arabic": 0.076713782036677,
+      "japanese": 0.08087582304142416,
+      "chinese": 0.08030415908433497,
+      "french": 0.063222142518498,
+      "spanish": 0.060940353316254914,
+      "korean": 0.08026139554567635
+    }
+  },
+  "model.layers.2.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 2,
+    "errors": {
+      "english": 0.2414302541874349,
+      "arabic": 0.4128447584807873,
+      "japanese": 0.42504249420017004,
+      "chinese": 0.39809260703623295,
+      "french": 0.3378828577697277,
+      "spanish": 0.3239363804459572,
+      "korean": 0.4361475221812725
+    }
+  },
+  "model.layers.2.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 2,
+    "errors": {
+      "english": 0.23358975118026137,
+      "arabic": 0.43025100510567427,
+      "japanese": 0.4232720350846648,
+      "chinese": 0.4059687191620469,
+      "french": 0.34373081754893064,
+      "spanish": 0.33459572214633226,
+      "korean": 0.46687601041048765
+    }
+  },
+  "model.layers.2.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 2,
+    "errors": {
+      "english": 0.041373528190888464,
+      "arabic": 0.07221168954856694,
+      "japanese": 0.05748004431370646,
+      "chinese": 0.05607141391374171,
+      "french": 0.0519888378912583,
+      "spanish": 0.053859536652453244,
+      "korean": 0.060743663692846894
+    }
+  },
+  "model.layers.2.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 2,
+    "errors": {
+      "english": 0.0630144253373146,
+      "arabic": 0.10739013296552002,
+      "japanese": 0.11489225225523114,
+      "chinese": 0.11732904193922877,
+      "french": 0.08353451895527542,
+      "spanish": 0.08119348366744816,
+      "korean": 0.11387305450625718
+    }
+  },
+  "model.layers.2.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 2,
+    "errors": {
+      "english": 0.12663665227591991,
+      "arabic": 0.1449371159542352,
+      "japanese": 0.15314625296741724,
+      "chinese": 0.13521244353614748,
+      "french": 0.1320331348106265,
+      "spanish": 0.13601348921656609,
+      "korean": 0.14864583546295762
+    }
+  },
+  "model.layers.3.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 3,
+    "errors": {
+      "english": 0.10949354921467602,
+      "arabic": 0.1731387204490602,
+      "japanese": 0.18237288761883974,
+      "chinese": 0.17540563410148025,
+      "french": 0.14215588080696762,
+      "spanish": 0.13564197067171335,
+      "korean": 0.17969144182279706
+    }
+  },
+  "model.layers.3.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 3,
+    "errors": {
+      "english": 0.14995801215991378,
+      "arabic": 0.2452264311723411,
+      "japanese": 0.2570266053080559,
+      "chinese": 0.23793946020305157,
+      "french": 0.19837934942916036,
+      "spanish": 0.1906987139955163,
+      "korean": 0.2574641816318035
+    }
+  },
+  "model.layers.3.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 3,
+    "errors": {
+      "english": 0.22335466323420405,
+      "arabic": 0.4016283331438899,
+      "japanese": 0.4096490442752838,
+      "chinese": 0.37865888979285955,
+      "french": 0.31176810385659337,
+      "spanish": 0.2954438542947173,
+      "korean": 0.4119074735790491
+    }
+  },
+  "model.layers.3.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 3,
+    "errors": {
+      "english": 0.4267875337973237,
+      "arabic": 0.739224823191762,
+      "japanese": 0.862835954874754,
+      "chinese": 0.6530890492722392,
+      "french": 0.5318290404975414,
+      "spanish": 0.5270255524665117,
+      "korean": 0.8024825938045979
+    }
+  },
+  "model.layers.3.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 3,
+    "errors": {
+      "english": 0.04872209089808166,
+      "arabic": 0.09060147311538458,
+      "japanese": 0.08984659356065094,
+      "chinese": 0.07786736381240189,
+      "french": 0.05879020690917969,
+      "spanish": 0.05930950678884983,
+      "korean": 0.08169970219023526
+    }
+  },
+  "model.layers.3.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 3,
+    "errors": {
+      "english": 0.14649257063865662,
+      "arabic": 0.23268115893006325,
+      "japanese": 0.25390339456498623,
+      "chinese": 0.24229038786143064,
+      "french": 0.19154253974556923,
+      "spanish": 0.18543465482071042,
+      "korean": 0.2519701854325831
+    }
+  },
+  "model.layers.3.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 3,
+    "errors": {
+      "english": 0.392058958299458,
+      "arabic": 0.4781814105808735,
+      "japanese": 0.4982461482286453,
+      "chinese": 0.4917946457862854,
+      "french": 0.43661160953342915,
+      "spanish": 0.4206646475940943,
+      "korean": 0.4989965483546257
+    }
+  },
+  "model.layers.4.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 4,
+    "errors": {
+      "english": 0.09965940658003092,
+      "arabic": 0.1499053006991744,
+      "japanese": 0.1632906016893685,
+      "chinese": 0.15848128590732813,
+      "french": 0.12693289015442133,
+      "spanish": 0.12320117931813002,
+      "korean": 0.16323660220950842
+    }
+  },
+  "model.layers.4.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 4,
+    "errors": {
+      "english": 0.12586396583355963,
+      "arabic": 0.1939198076725006,
+      "japanese": 0.21004034765064716,
+      "chinese": 0.20043943403288722,
+      "french": 0.16302636032924056,
+      "spanish": 0.15842638863250613,
+      "korean": 0.20908872922882438
+    }
+  },
+  "model.layers.4.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 4,
+    "errors": {
+      "english": 0.2631576946005225,
+      "arabic": 0.41782674472779036,
+      "japanese": 0.4435085440054536,
+      "chinese": 0.42871316708624363,
+      "french": 0.3441499462351203,
+      "spanish": 0.33219784684479237,
+      "korean": 0.4431684613227844
+    }
+  },
+  "model.layers.4.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 4,
+    "errors": {
+      "english": 0.4715238492935896,
+      "arabic": 0.6384379491209984,
+      "japanese": 0.6987301297485828,
+      "chinese": 0.6702363677322865,
+      "french": 0.5774338142946362,
+      "spanish": 0.5586278792470694,
+      "korean": 0.6454773098230362
+    }
+  },
+  "model.layers.4.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 4,
+    "errors": {
+      "english": 0.04480037372559309,
+      "arabic": 0.0682466016151011,
+      "japanese": 0.07381958793848753,
+      "chinese": 0.07122694817371666,
+      "french": 0.056701216381043196,
+      "spanish": 0.057132680201902986,
+      "korean": 0.06958430947270244
+    }
+  },
+  "model.layers.4.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 4,
+    "errors": {
+      "english": 0.19926108745858073,
+      "arabic": 0.32465372141450644,
+      "japanese": 0.3593497881665826,
+      "chinese": 0.3449581637978554,
+      "french": 0.26707332814112306,
+      "spanish": 0.2566687809303403,
+      "korean": 0.356105993501842
+    }
+  },
+  "model.layers.4.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 4,
+    "errors": {
+      "english": 0.3793873870745301,
+      "arabic": 0.5748440977185965,
+      "japanese": 0.5841756071895361,
+      "chinese": 0.574453785084188,
+      "french": 0.4707377292215824,
+      "spanish": 0.4520713873207569,
+      "korean": 0.5903120944276452
+    }
+  },
+  "model.layers.5.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 5,
+    "errors": {
+      "english": 0.12024376937188208,
+      "arabic": 0.1702708201482892,
+      "japanese": 0.18960830010473728,
+      "chinese": 0.1858057868666947,
+      "french": 0.14809229504317045,
+      "spanish": 0.14332222193479538,
+      "korean": 0.18512327130883932
+    }
+  },
+  "model.layers.5.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 5,
+    "errors": {
+      "english": 0.17981545766815543,
+      "arabic": 0.25901415571570396,
+      "japanese": 0.2838441962376237,
+      "chinese": 0.2761995196342468,
+      "french": 0.2211190857924521,
+      "spanish": 0.21471033478155732,
+      "korean": 0.28081112867221236
+    }
+  },
+  "model.layers.5.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 5,
+    "errors": {
+      "english": 0.31584080308675766,
+      "arabic": 0.469184048473835,
+      "japanese": 0.5027179475873709,
+      "chinese": 0.47524008620530367,
+      "french": 0.40100580267608166,
+      "spanish": 0.38873101212084293,
+      "korean": 0.497561558149755
+    }
+  },
+  "model.layers.5.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 5,
+    "errors": {
+      "english": 0.6304019242525101,
+      "arabic": 0.7434729300439358,
+      "japanese": 0.8096316028386354,
+      "chinese": 0.8174168225377798,
+      "french": 0.6679053083062172,
+      "spanish": 0.6549120843410492,
+      "korean": 0.808623693883419
+    }
+  },
+  "model.layers.5.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 5,
+    "errors": {
+      "english": 0.05688291369006038,
+      "arabic": 0.09319011028856039,
+      "japanese": 0.10766423773020506,
+      "chinese": 0.09419937594793737,
+      "french": 0.07905454724095762,
+      "spanish": 0.07471656939014792,
+      "korean": 0.11042802105657756
+    }
+  },
+  "model.layers.5.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 5,
+    "errors": {
+      "english": 0.2569280192255974,
+      "arabic": 0.40766465570777655,
+      "japanese": 0.4415305210277438,
+      "chinese": 0.43073257338255644,
+      "french": 0.3373811710625887,
+      "spanish": 0.32635295763611794,
+      "korean": 0.4465954750776291
+    }
+  },
+  "model.layers.5.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 5,
+    "errors": {
+      "english": 0.43248580768704414,
+      "arabic": 0.5766906999051571,
+      "japanese": 0.6310600582510233,
+      "chinese": 0.6163704227656126,
+      "french": 0.5168724786490202,
+      "spanish": 0.48869906831532717,
+      "korean": 0.636269848793745
+    }
+  },
+  "model.layers.6.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 6,
+    "errors": {
+      "english": 0.13468720763921738,
+      "arabic": 0.20258883433416486,
+      "japanese": 0.2178120738826692,
+      "chinese": 0.21363813756033778,
+      "french": 0.17142733512446284,
+      "spanish": 0.16601508390158415,
+      "korean": 0.216853151563555
+    }
+  },
+  "model.layers.6.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 6,
+    "errors": {
+      "english": 0.15710450010374188,
+      "arabic": 0.2505641570314765,
+      "japanese": 0.2697037309408188,
+      "chinese": 0.25250741373747587,
+      "french": 0.20697320019826293,
+      "spanish": 0.2007527407258749,
+      "korean": 0.27002535993233323
+    }
+  },
+  "model.layers.6.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 6,
+    "errors": {
+      "english": 0.3247150797396898,
+      "arabic": 0.5162336947396398,
+      "japanese": 0.5289377886801958,
+      "chinese": 0.48902571201324463,
+      "french": 0.412642665207386,
+      "spanish": 0.4031599974259734,
+      "korean": 0.5255750678479671
+    }
+  },
+  "model.layers.6.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 6,
+    "errors": {
+      "english": 0.47604145389050245,
+      "arabic": 0.6652034875005484,
+      "japanese": 0.6747690141201019,
+      "chinese": 0.6430116929113865,
+      "french": 0.57217120192945,
+      "spanish": 0.5726523697376251,
+      "korean": 0.6665471624583006
+    }
+  },
+  "model.layers.6.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 6,
+    "errors": {
+      "english": 0.060104305390268564,
+      "arabic": 0.11475356016308069,
+      "japanese": 0.11961868102662265,
+      "chinese": 0.11166289681568742,
+      "french": 0.08937630034051836,
+      "spanish": 0.08668190124444664,
+      "korean": 0.12209480674937367
+    }
+  },
+  "model.layers.6.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 6,
+    "errors": {
+      "english": 0.27877067122608423,
+      "arabic": 0.4655012944713235,
+      "japanese": 0.48949154559522867,
+      "chinese": 0.47017780039459467,
+      "french": 0.37738704867661,
+      "spanish": 0.3676067143678665,
+      "korean": 0.49671247135847807
+    }
+  },
+  "model.layers.6.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 6,
+    "errors": {
+      "english": 0.47142527531832457,
+      "arabic": 0.6696353759616613,
+      "japanese": 0.7248547878116369,
+      "chinese": 0.6850863732397556,
+      "french": 0.5815249998122454,
+      "spanish": 0.5632160641252995,
+      "korean": 0.7313222922384739
+    }
+  },
+  "model.layers.7.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 7,
+    "errors": {
+      "english": 0.16593671403825283,
+      "arabic": 0.2596091157756746,
+      "japanese": 0.2621262106113136,
+      "chinese": 0.25676989927887917,
+      "french": 0.21661534626036882,
+      "spanish": 0.21161476615816355,
+      "korean": 0.267839165404439
+    }
+  },
+  "model.layers.7.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 7,
+    "errors": {
+      "english": 0.1909197848290205,
+      "arabic": 0.3040044251829386,
+      "japanese": 0.30046520847827196,
+      "chinese": 0.2842867881990969,
+      "french": 0.24630418373271823,
+      "spanish": 0.2420267565175891,
+      "korean": 0.30243854271247983
+    }
+  },
+  "model.layers.7.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 7,
+    "errors": {
+      "english": 0.39458013977855444,
+      "arabic": 0.6395209804177284,
+      "japanese": 0.6378213372081518,
+      "chinese": 0.6094877943396568,
+      "french": 0.5135976178571582,
+      "spanish": 0.49923180416226387,
+      "korean": 0.6458608601242304
+    }
+  },
+  "model.layers.7.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 7,
+    "errors": {
+      "english": 0.51213997323066,
+      "arabic": 0.7886002995073795,
+      "japanese": 0.7367917578667402,
+      "chinese": 0.719013100489974,
+      "french": 0.612178910523653,
+      "spanish": 0.5953197367489338,
+      "korean": 0.7407015115022659
+    }
+  },
+  "model.layers.7.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 7,
+    "errors": {
+      "english": 0.06986489635892212,
+      "arabic": 0.13110807328484952,
+      "japanese": 0.1325109468307346,
+      "chinese": 0.12217046739533544,
+      "french": 0.10292970295995474,
+      "spanish": 0.09892243077047169,
+      "korean": 0.13657739968039095
+    }
+  },
+  "model.layers.7.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 7,
+    "errors": {
+      "english": 0.2924200790002942,
+      "arabic": 0.5062870476394892,
+      "japanese": 0.5163142094388604,
+      "chinese": 0.47856191731989384,
+      "french": 0.41001685708761215,
+      "spanish": 0.39876740612089634,
+      "korean": 0.5237231394276023
+    }
+  },
+  "model.layers.7.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 7,
+    "errors": {
+      "english": 0.4703528117388487,
+      "arabic": 0.6935214623808861,
+      "japanese": 0.7395968064665794,
+      "chinese": 0.6864386852830648,
+      "french": 0.5921089556068182,
+      "spanish": 0.5734918005764484,
+      "korean": 0.7312617376446724
+    }
+  },
+  "model.layers.8.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 8,
+    "errors": {
+      "english": 0.17939739394932985,
+      "arabic": 0.2894685100764036,
+      "japanese": 0.2887343429028988,
+      "chinese": 0.2849360378459096,
+      "french": 0.23847117461264133,
+      "spanish": 0.23245084984228015,
+      "korean": 0.2983972318470478
+    }
+  },
+  "model.layers.8.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 8,
+    "errors": {
+      "english": 0.19611761812120676,
+      "arabic": 0.3266614656895399,
+      "japanese": 0.3217483637854457,
+      "chinese": 0.30349841248244047,
+      "french": 0.2616647123359144,
+      "spanish": 0.2569192685186863,
+      "korean": 0.3274849373847246
+    }
+  },
+  "model.layers.8.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 8,
+    "errors": {
+      "english": 0.3799689784646034,
+      "arabic": 0.6435985565185547,
+      "japanese": 0.6506243012845516,
+      "chinese": 0.5903281755745411,
+      "french": 0.5198862487450242,
+      "spanish": 0.5010179663076997,
+      "korean": 0.6621590070426464
+    }
+  },
+  "model.layers.8.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 8,
+    "errors": {
+      "english": 0.48999428004026413,
+      "arabic": 0.7799516040831804,
+      "japanese": 0.7711350675672293,
+      "chinese": 0.7052305210381746,
+      "french": 0.6322813630104065,
+      "spanish": 0.6100054979324341,
+      "korean": 0.7986863050609827
+    }
+  },
+  "model.layers.8.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 8,
+    "errors": {
+      "english": 0.0931879784911871,
+      "arabic": 0.1709483410231769,
+      "japanese": 0.1710072229616344,
+      "chinese": 0.15676252241246402,
+      "french": 0.1373769238125533,
+      "spanish": 0.13285236433148384,
+      "korean": 0.17420983454212546
+    }
+  },
+  "model.layers.8.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 8,
+    "errors": {
+      "english": 0.3541705785319209,
+      "arabic": 0.5748213361948729,
+      "japanese": 0.591944370418787,
+      "chinese": 0.555930926464498,
+      "french": 0.4753209389746189,
+      "spanish": 0.4627672713249922,
+      "korean": 0.5984054999426007
+    }
+  },
+  "model.layers.8.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 8,
+    "errors": {
+      "english": 0.5140656400471926,
+      "arabic": 0.7471726406365633,
+      "japanese": 0.7824849337339401,
+      "chinese": 0.7466183453798294,
+      "french": 0.6405575647950172,
+      "spanish": 0.6305761653929949,
+      "korean": 0.7785095516592264
+    }
+  },
+  "model.layers.9.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 9,
+    "errors": {
+      "english": 0.15038048522546887,
+      "arabic": 0.24470311403274536,
+      "japanese": 0.24397240485996008,
+      "chinese": 0.23543480690568686,
+      "french": 0.20087127480655909,
+      "spanish": 0.19625361170619726,
+      "korean": 0.24845718266442418
+    }
+  },
+  "model.layers.9.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 9,
+    "errors": {
+      "english": 0.18595027970150113,
+      "arabic": 0.3104342767037451,
+      "japanese": 0.309724610298872,
+      "chinese": 0.29128453228622675,
+      "french": 0.25011518178507686,
+      "spanish": 0.2452142834663391,
+      "korean": 0.3136334642767906
+    }
+  },
+  "model.layers.9.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 9,
+    "errors": {
+      "english": 0.41295255720615387,
+      "arabic": 0.6683175060898066,
+      "japanese": 0.6940625682473183,
+      "chinese": 0.6414770130068064,
+      "french": 0.5430883839726448,
+      "spanish": 0.5272008804604411,
+      "korean": 0.7057994958013296
+    }
+  },
+  "model.layers.9.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 9,
+    "errors": {
+      "english": 0.5307674696668983,
+      "arabic": 0.7826797049492598,
+      "japanese": 0.8561287187039852,
+      "chinese": 0.791801355779171,
+      "french": 0.6813443675637245,
+      "spanish": 0.6530273277312517,
+      "korean": 0.8660504315048456
+    }
+  },
+  "model.layers.9.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 9,
+    "errors": {
+      "english": 0.10425904975272715,
+      "arabic": 0.1901923594996333,
+      "japanese": 0.18929591868072748,
+      "chinese": 0.17200453486293554,
+      "french": 0.1536166884470731,
+      "spanish": 0.14738497091457248,
+      "korean": 0.19398586498573422
+    }
+  },
+  "model.layers.9.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 9,
+    "errors": {
+      "english": 0.3889968115836382,
+      "arabic": 0.6153504773974419,
+      "japanese": 0.6362877748906612,
+      "chinese": 0.601786115206778,
+      "french": 0.5092074703425169,
+      "spanish": 0.49575759191066027,
+      "korean": 0.6429933244362473
+    }
+  },
+  "model.layers.9.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 9,
+    "errors": {
+      "english": 0.5603040233254433,
+      "arabic": 0.7985447254031897,
+      "japanese": 0.8424477744847536,
+      "chinese": 0.7912688888609409,
+      "french": 0.6887721549719572,
+      "spanish": 0.6685461960732937,
+      "korean": 0.8308988455682993
+    }
+  },
+  "model.layers.10.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 10,
+    "errors": {
+      "english": 0.1862326511181891,
+      "arabic": 0.2939217025414109,
+      "japanese": 0.29508076608181,
+      "chinese": 0.28951143845915794,
+      "french": 0.24297476280480623,
+      "spanish": 0.23799926787614822,
+      "korean": 0.30229304172098637
+    }
+  },
+  "model.layers.10.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 10,
+    "errors": {
+      "english": 0.19695932557806373,
+      "arabic": 0.31884879991412163,
+      "japanese": 0.31689401995390654,
+      "chinese": 0.2995107127353549,
+      "french": 0.2559744082391262,
+      "spanish": 0.25253845984116197,
+      "korean": 0.323273615911603
+    }
+  },
+  "model.layers.10.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 10,
+    "errors": {
+      "english": 0.44450973626226187,
+      "arabic": 0.6985376439988613,
+      "japanese": 0.7149867173284292,
+      "chinese": 0.6710209362208843,
+      "french": 0.5756846060976386,
+      "spanish": 0.5634051188826561,
+      "korean": 0.7256175614893436
+    }
+  },
+  "model.layers.10.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 10,
+    "errors": {
+      "english": 0.5539341969415545,
+      "arabic": 0.8095345757901669,
+      "japanese": 0.8502545244991779,
+      "chinese": 0.8615889083594084,
+      "french": 0.6860410775989294,
+      "spanish": 0.6756929159164429,
+      "korean": 0.8490247465670109
+    }
+  },
+  "model.layers.10.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 10,
+    "errors": {
+      "english": 0.132054214598611,
+      "arabic": 0.24436323018744588,
+      "japanese": 0.2440164191648364,
+      "chinese": 0.21439610607922077,
+      "french": 0.19982744520530105,
+      "spanish": 0.19006967591121793,
+      "korean": 0.24972049426287413
+    }
+  },
+  "model.layers.10.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 10,
+    "errors": {
+      "english": 0.45820293482393026,
+      "arabic": 0.6922622937709093,
+      "japanese": 0.7200318463146687,
+      "chinese": 0.6910743452608585,
+      "french": 0.5817211456596851,
+      "spanish": 0.5674890838563442,
+      "korean": 0.7247919552028179
+    }
+  },
+  "model.layers.10.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 10,
+    "errors": {
+      "english": 0.5931810308247805,
+      "arabic": 0.8551540151238441,
+      "japanese": 0.8694322537630796,
+      "chinese": 0.8325290717184544,
+      "french": 0.7342257015407085,
+      "spanish": 0.7171951178461313,
+      "korean": 0.8806370086967945
+    }
+  },
+  "model.layers.11.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 11,
+    "errors": {
+      "english": 0.1676577697508037,
+      "arabic": 0.25942523777484894,
+      "japanese": 0.26248999685049057,
+      "chinese": 0.256585035007447,
+      "french": 0.21779848914593458,
+      "spanish": 0.21288280887529254,
+      "korean": 0.263850184623152
+    }
+  },
+  "model.layers.11.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 11,
+    "errors": {
+      "english": 0.19396056281402707,
+      "arabic": 0.3141469834372401,
+      "japanese": 0.3125070324167609,
+      "chinese": 0.2931486959569156,
+      "french": 0.25536848278716207,
+      "spanish": 0.2503294157795608,
+      "korean": 0.31574003444984555
+    }
+  },
+  "model.layers.11.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 11,
+    "errors": {
+      "english": 0.47609876841306686,
+      "arabic": 0.744873033836484,
+      "japanese": 0.753777289763093,
+      "chinese": 0.7082287278026342,
+      "french": 0.6161947008222342,
+      "spanish": 0.6029917635023594,
+      "korean": 0.7654104717075825
+    }
+  },
+  "model.layers.11.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 11,
+    "errors": {
+      "english": 0.5655637495219707,
+      "arabic": 0.8592992555350065,
+      "japanese": 0.8657875955104828,
+      "chinese": 0.8199038039892912,
+      "french": 0.7197849787771702,
+      "spanish": 0.7069762982428074,
+      "korean": 0.86624476313591
+    }
+  },
+  "model.layers.11.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 11,
+    "errors": {
+      "english": 0.19174788473173976,
+      "arabic": 0.3402040535584092,
+      "japanese": 0.33895895071327686,
+      "chinese": 0.2997326357290149,
+      "french": 0.2721650106832385,
+      "spanish": 0.2639479604549706,
+      "korean": 0.34529199078679085
+    }
+  },
+  "model.layers.11.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 11,
+    "errors": {
+      "english": 0.47628752514719963,
+      "arabic": 0.7125459834933281,
+      "japanese": 0.741986321285367,
+      "chinese": 0.7070475369691849,
+      "french": 0.6012308243662119,
+      "spanish": 0.5880161076784134,
+      "korean": 0.747040381655097
+    }
+  },
+  "model.layers.11.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 11,
+    "errors": {
+      "english": 0.5923646334558725,
+      "arabic": 0.8588023092597723,
+      "japanese": 0.8867923058569431,
+      "chinese": 0.8406245373189449,
+      "french": 0.7366116736084223,
+      "spanish": 0.7258460912853479,
+      "korean": 0.8923661131411791
+    }
+  },
+  "model.layers.12.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 12,
+    "errors": {
+      "english": 0.20586589630693197,
+      "arabic": 0.3165486669167876,
+      "japanese": 0.3216125490143895,
+      "chinese": 0.31049470603466034,
+      "french": 0.2669077473692596,
+      "spanish": 0.2606908190064132,
+      "korean": 0.3264141846448183
+    }
+  },
+  "model.layers.12.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 12,
+    "errors": {
+      "english": 0.22455823700875044,
+      "arabic": 0.355087086558342,
+      "japanese": 0.3629555692896247,
+      "chinese": 0.3354768259450793,
+      "french": 0.2909641624428332,
+      "spanish": 0.2855951525270939,
+      "korean": 0.366077977232635
+    }
+  },
+  "model.layers.12.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 12,
+    "errors": {
+      "english": 0.47662938572466373,
+      "arabic": 0.7461266219615936,
+      "japanese": 0.7555563878268003,
+      "chinese": 0.7038962170481682,
+      "french": 0.619107261300087,
+      "spanish": 0.6091777849942446,
+      "korean": 0.7705087270587683
+    }
+  },
+  "model.layers.12.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 12,
+    "errors": {
+      "english": 0.5884236991405487,
+      "arabic": 0.8274695016443729,
+      "japanese": 0.8396063111722469,
+      "chinese": 0.7862159535288811,
+      "french": 0.7099353410303593,
+      "spanish": 0.6954482421278954,
+      "korean": 0.8578321188688278
+    }
+  },
+  "model.layers.12.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 12,
+    "errors": {
+      "english": 0.18705405201762915,
+      "arabic": 0.2972600385546684,
+      "japanese": 0.299074930138886,
+      "chinese": 0.27875255793333054,
+      "french": 0.24331250553950667,
+      "spanish": 0.23585184384137392,
+      "korean": 0.3066456955857575
+    }
+  },
+  "model.layers.12.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 12,
+    "errors": {
+      "english": 0.49260363727808,
+      "arabic": 0.7258818782866001,
+      "japanese": 0.7446986492723227,
+      "chinese": 0.7130119521170855,
+      "french": 0.6093494296073914,
+      "spanish": 0.5974874310195446,
+      "korean": 0.753877704963088
+    }
+  },
+  "model.layers.12.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 12,
+    "errors": {
+      "english": 0.6078865062445402,
+      "arabic": 0.8663418740034103,
+      "japanese": 0.8781493622809649,
+      "chinese": 0.8411676324903965,
+      "french": 0.7303697112947702,
+      "spanish": 0.7208543289452791,
+      "korean": 0.8861969504505396
+    }
+  },
+  "model.layers.13.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 13,
+    "errors": {
+      "english": 0.1678514122031629,
+      "arabic": 0.25996621511876583,
+      "japanese": 0.2604480516165495,
+      "chinese": 0.24713086150586605,
+      "french": 0.21508473670110106,
+      "spanish": 0.2098547238856554,
+      "korean": 0.2680042930878699
+    }
+  },
+  "model.layers.13.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 13,
+    "errors": {
+      "english": 0.22060555638745427,
+      "arabic": 0.3543315501883626,
+      "japanese": 0.3489362383261323,
+      "chinese": 0.31886151945218444,
+      "french": 0.2871260396204889,
+      "spanish": 0.27882928354665637,
+      "korean": 0.36356142070144415
+    }
+  },
+  "model.layers.13.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 13,
+    "errors": {
+      "english": 0.36386545468121767,
+      "arabic": 0.5696314703673124,
+      "japanese": 0.5687501393258572,
+      "chinese": 0.5343021666631103,
+      "french": 0.46187406685203314,
+      "spanish": 0.446317576803267,
+      "korean": 0.5928163910284638
+    }
+  },
+  "model.layers.13.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 13,
+    "errors": {
+      "english": 0.5573044195771217,
+      "arabic": 0.7732594665139914,
+      "japanese": 0.7798059936612844,
+      "chinese": 0.758391136303544,
+      "french": 0.6558251585811377,
+      "spanish": 0.6417306922376156,
+      "korean": 0.8205621130764484
+    }
+  },
+  "model.layers.13.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 13,
+    "errors": {
+      "english": 0.29628216195851564,
+      "arabic": 0.43328660912811756,
+      "japanese": 0.4420130653306842,
+      "chinese": 0.4352772496640682,
+      "french": 0.36397438403218985,
+      "spanish": 0.3522167392075062,
+      "korean": 0.45892604254186153
+    }
+  },
+  "model.layers.13.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 13,
+    "errors": {
+      "english": 0.5159480730071664,
+      "arabic": 0.740569094195962,
+      "japanese": 0.7546810992062092,
+      "chinese": 0.7277590483427048,
+      "french": 0.6297910418361425,
+      "spanish": 0.6188777629286051,
+      "korean": 0.7686224672943354
+    }
+  },
+  "model.layers.13.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 13,
+    "errors": {
+      "english": 0.6391451489180326,
+      "arabic": 0.8682569302618504,
+      "japanese": 0.8782969452440739,
+      "chinese": 0.8543086610734463,
+      "french": 0.7550632357597351,
+      "spanish": 0.7447623424232006,
+      "korean": 0.8950871229171753
+    }
+  },
+  "model.layers.14.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 14,
+    "errors": {
+      "english": 0.18259319569915533,
+      "arabic": 0.28028266318142414,
+      "japanese": 0.27927383314818144,
+      "chinese": 0.26769991870969534,
+      "french": 0.23386530065909028,
+      "spanish": 0.22685909131541848,
+      "korean": 0.29188046231865883
+    }
+  },
+  "model.layers.14.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 14,
+    "errors": {
+      "english": 0.20674116304144263,
+      "arabic": 0.3270166562870145,
+      "japanese": 0.32359797693789005,
+      "chinese": 0.3009963030926883,
+      "french": 0.2676794910803437,
+      "spanish": 0.2599014504812658,
+      "korean": 0.3428652361035347
+    }
+  },
+  "model.layers.14.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 14,
+    "errors": {
+      "english": 0.4429117748513818,
+      "arabic": 0.681495351716876,
+      "japanese": 0.6801336724311113,
+      "chinese": 0.6644223304465413,
+      "french": 0.5615440905094147,
+      "spanish": 0.5488956663757563,
+      "korean": 0.7083075642585754
+    }
+  },
+  "model.layers.14.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 14,
+    "errors": {
+      "english": 0.5430716183036566,
+      "arabic": 0.7687127441167831,
+      "japanese": 0.718258747830987,
+      "chinese": 0.7359000165015459,
+      "french": 0.6265114825218916,
+      "spanish": 0.6232396140694618,
+      "korean": 0.7648068256676197
+    }
+  },
+  "model.layers.14.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 14,
+    "errors": {
+      "english": 0.28013866348192096,
+      "arabic": 0.4063541255891323,
+      "japanese": 0.4123058598488569,
+      "chinese": 0.4114190870895982,
+      "french": 0.33981560822576284,
+      "spanish": 0.32949827890843153,
+      "korean": 0.42961765825748444
+    }
+  },
+  "model.layers.14.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 14,
+    "errors": {
+      "english": 0.5231160325929523,
+      "arabic": 0.7401648089289665,
+      "japanese": 0.7474964167922735,
+      "chinese": 0.7262890953570604,
+      "french": 0.6272298973053694,
+      "spanish": 0.6159966271370649,
+      "korean": 0.7637720666825771
+    }
+  },
+  "model.layers.14.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 14,
+    "errors": {
+      "english": 0.6414653938263655,
+      "arabic": 0.8700273465365171,
+      "japanese": 0.8713856656104326,
+      "chinese": 0.8470666110515594,
+      "french": 0.7493444625288248,
+      "spanish": 0.7369425445795059,
+      "korean": 0.8855736628174782
+    }
+  },
+  "model.layers.15.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 15,
+    "errors": {
+      "english": 0.17990818480029702,
+      "arabic": 0.27925624838098884,
+      "japanese": 0.2737284400500357,
+      "chinese": 0.26228302996605635,
+      "french": 0.22869645711034536,
+      "spanish": 0.22150650154799223,
+      "korean": 0.2879171231761575
+    }
+  },
+  "model.layers.15.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 15,
+    "errors": {
+      "english": 0.20727341528981924,
+      "arabic": 0.3398162592202425,
+      "japanese": 0.32566134072840214,
+      "chinese": 0.3041331651620567,
+      "french": 0.2666643913835287,
+      "spanish": 0.25789815466850996,
+      "korean": 0.3484283508732915
+    }
+  },
+  "model.layers.15.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 15,
+    "errors": {
+      "english": 0.41457447595894337,
+      "arabic": 0.6419337969273329,
+      "japanese": 0.639516731724143,
+      "chinese": 0.6072818571701646,
+      "french": 0.5163691332563758,
+      "spanish": 0.5005180006846786,
+      "korean": 0.6715617645531893
+    }
+  },
+  "model.layers.15.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 15,
+    "errors": {
+      "english": 0.5573746897280216,
+      "arabic": 0.7887880988419056,
+      "japanese": 0.7863093409687281,
+      "chinese": 0.7481645066291094,
+      "french": 0.6459853556007147,
+      "spanish": 0.6303345989435911,
+      "korean": 0.8309137690812349
+    }
+  },
+  "model.layers.15.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 15,
+    "errors": {
+      "english": 0.31536709796637297,
+      "arabic": 0.44993886910378933,
+      "japanese": 0.45614329632371664,
+      "chinese": 0.45351284090429544,
+      "french": 0.37665383890271187,
+      "spanish": 0.3659265963360667,
+      "korean": 0.4777409713715315
+    }
+  },
+  "model.layers.15.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 15,
+    "errors": {
+      "english": 0.5262305801734328,
+      "arabic": 0.7396542746573687,
+      "japanese": 0.7413373552262783,
+      "chinese": 0.7224352024495602,
+      "french": 0.6251844111829996,
+      "spanish": 0.6127281580120325,
+      "korean": 0.7638055086135864
+    }
+  },
+  "model.layers.15.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 15,
+    "errors": {
+      "english": 0.6656717769801617,
+      "arabic": 0.8768911585211754,
+      "japanese": 0.8713636752218008,
+      "chinese": 0.8675200920552015,
+      "french": 0.7613685578107834,
+      "spanish": 0.7451864052563906,
+      "korean": 0.8944616671651602
+    }
+  },
+  "model.layers.16.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 16,
+    "errors": {
+      "english": 0.22650926234200597,
+      "arabic": 0.33397630974650383,
+      "japanese": 0.3234743382781744,
+      "chinese": 0.3155643274076283,
+      "french": 0.2786173722706735,
+      "spanish": 0.2706557186320424,
+      "korean": 0.339270013384521
+    }
+  },
+  "model.layers.16.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 16,
+    "errors": {
+      "english": 0.20231925696134567,
+      "arabic": 0.3190378760918975,
+      "japanese": 0.3036239929497242,
+      "chinese": 0.2870271601714194,
+      "french": 0.2542242989875376,
+      "spanish": 0.24816299974918365,
+      "korean": 0.3266051961109042
+    }
+  },
+  "model.layers.16.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 16,
+    "errors": {
+      "english": 0.49213934503495693,
+      "arabic": 0.7531380727887154,
+      "japanese": 0.7490866016596556,
+      "chinese": 0.7245918828994036,
+      "french": 0.6256186384707689,
+      "spanish": 0.5998931098729372,
+      "korean": 0.7895940560847521
+    }
+  },
+  "model.layers.16.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 16,
+    "errors": {
+      "english": 0.585030185058713,
+      "arabic": 0.8146352581679821,
+      "japanese": 0.8180107325315475,
+      "chinese": 0.7814269531518221,
+      "french": 0.7097895797342062,
+      "spanish": 0.6893473509699106,
+      "korean": 0.8531573172658682
+    }
+  },
+  "model.layers.16.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 16,
+    "errors": {
+      "english": 0.29986616130918264,
+      "arabic": 0.427215407602489,
+      "japanese": 0.43220755085349083,
+      "chinese": 0.4352981122210622,
+      "french": 0.3582232529297471,
+      "spanish": 0.3477945737540722,
+      "korean": 0.4541460834443569
+    }
+  },
+  "model.layers.16.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 16,
+    "errors": {
+      "english": 0.5349571499973536,
+      "arabic": 0.7526506017893553,
+      "japanese": 0.749948175624013,
+      "chinese": 0.7301927097141743,
+      "french": 0.6324830912053585,
+      "spanish": 0.6182561609894037,
+      "korean": 0.7789660412818193
+    }
+  },
+  "model.layers.16.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 16,
+    "errors": {
+      "english": 0.666865536943078,
+      "arabic": 0.8851756993681192,
+      "japanese": 0.8996348828077316,
+      "chinese": 0.8675956428050995,
+      "french": 0.7640087828040123,
+      "spanish": 0.7531895451247692,
+      "korean": 0.9208450224250555
+    }
+  },
+  "model.layers.17.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 17,
+    "errors": {
+      "english": 0.22620548447594047,
+      "arabic": 0.34018413070589304,
+      "japanese": 0.3416839502751827,
+      "chinese": 0.3275215048342943,
+      "french": 0.27976041473448277,
+      "spanish": 0.2696605008095503,
+      "korean": 0.3557803574949503
+    }
+  },
+  "model.layers.17.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 17,
+    "errors": {
+      "english": 0.26062574377283454,
+      "arabic": 0.4065754562616348,
+      "japanese": 0.4078826569020748,
+      "chinese": 0.37346311658620834,
+      "french": 0.32497290428727865,
+      "spanish": 0.31143022887408733,
+      "korean": 0.4297122657299042
+    }
+  },
+  "model.layers.17.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 17,
+    "errors": {
+      "english": 0.4690671758726239,
+      "arabic": 0.6837686784565449,
+      "japanese": 0.6857354938983917,
+      "chinese": 0.6509617678821087,
+      "french": 0.5594650954008102,
+      "spanish": 0.5463225468993187,
+      "korean": 0.7178544756025076
+    }
+  },
+  "model.layers.17.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 17,
+    "errors": {
+      "english": 0.6016913922503591,
+      "arabic": 0.8106614612042904,
+      "japanese": 0.8215041011571884,
+      "chinese": 0.7958854865282774,
+      "french": 0.6623407490551472,
+      "spanish": 0.6661219969391823,
+      "korean": 0.8458319753408432
+    }
+  },
+  "model.layers.17.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 17,
+    "errors": {
+      "english": 0.33575590420514345,
+      "arabic": 0.4845574405044317,
+      "japanese": 0.48652112297713757,
+      "chinese": 0.4768082844093442,
+      "french": 0.40217327419668436,
+      "spanish": 0.38970128633081913,
+      "korean": 0.5107917813584208
+    }
+  },
+  "model.layers.17.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 17,
+    "errors": {
+      "english": 0.5339281307533383,
+      "arabic": 0.7468864228576422,
+      "japanese": 0.7467675879597664,
+      "chinese": 0.721636563539505,
+      "french": 0.6248214282095432,
+      "spanish": 0.6114988438785076,
+      "korean": 0.7753950450569391
+    }
+  },
+  "model.layers.17.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 17,
+    "errors": {
+      "english": 0.7019053660333157,
+      "arabic": 0.9340516552329063,
+      "japanese": 0.9396912641823292,
+      "chinese": 0.8990689180791378,
+      "french": 0.8032142538577318,
+      "spanish": 0.7908615805208683,
+      "korean": 0.9611625168472528
+    }
+  },
+  "model.layers.18.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 18,
+    "errors": {
+      "english": 0.22059139516204596,
+      "arabic": 0.32710100151598454,
+      "japanese": 0.3204481229186058,
+      "chinese": 0.30468753119930625,
+      "french": 0.2699331580661237,
+      "spanish": 0.2607469870708883,
+      "korean": 0.3376555871218443
+    }
+  },
+  "model.layers.18.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 18,
+    "errors": {
+      "english": 0.15484651224687696,
+      "arabic": 0.24709969433024526,
+      "japanese": 0.24272343842312694,
+      "chinese": 0.2282877997495234,
+      "french": 0.19679130660369992,
+      "spanish": 0.18904907163232565,
+      "korean": 0.25837978767231107
+    }
+  },
+  "model.layers.18.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 18,
+    "errors": {
+      "english": 0.5291022378951311,
+      "arabic": 0.7888632509857416,
+      "japanese": 0.7782225254923105,
+      "chinese": 0.7443009931594133,
+      "french": 0.6409492958337069,
+      "spanish": 0.6249281540513039,
+      "korean": 0.8150132987648249
+    }
+  },
+  "model.layers.18.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 18,
+    "errors": {
+      "english": 0.5555814653635025,
+      "arabic": 0.7948767002671957,
+      "japanese": 0.7924299091100693,
+      "chinese": 0.7428208012133837,
+      "french": 0.6393833719193935,
+      "spanish": 0.6253239512443542,
+      "korean": 0.8202657122164965
+    }
+  },
+  "model.layers.18.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 18,
+    "errors": {
+      "english": 0.324421064928174,
+      "arabic": 0.45983280055224895,
+      "japanese": 0.4618707774206996,
+      "chinese": 0.4536901256069541,
+      "french": 0.38404359947890043,
+      "spanish": 0.3721687654033303,
+      "korean": 0.4853796260431409
+    }
+  },
+  "model.layers.18.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 18,
+    "errors": {
+      "english": 0.5474162278696895,
+      "arabic": 0.7653404008597136,
+      "japanese": 0.7609799802303314,
+      "chinese": 0.7305465247482061,
+      "french": 0.636915922164917,
+      "spanish": 0.6242412123829126,
+      "korean": 0.7912567593157291
+    }
+  },
+  "model.layers.18.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 18,
+    "errors": {
+      "english": 0.7277398090809584,
+      "arabic": 0.9729811176657677,
+      "japanese": 0.9789108671247959,
+      "chinese": 0.9203725289553404,
+      "french": 0.8149642236530781,
+      "spanish": 0.8052033800631762,
+      "korean": 0.9974296912550926
+    }
+  },
+  "model.layers.19.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 19,
+    "errors": {
+      "english": 0.2470089509151876,
+      "arabic": 0.36224182415753603,
+      "japanese": 0.36449440103024244,
+      "chinese": 0.34717672131955624,
+      "french": 0.2995707197114825,
+      "spanish": 0.2883178945630789,
+      "korean": 0.3844262845814228
+    }
+  },
+  "model.layers.19.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 19,
+    "errors": {
+      "english": 0.24238161649554968,
+      "arabic": 0.3715137876570225,
+      "japanese": 0.3730248035863042,
+      "chinese": 0.3504644175991416,
+      "french": 0.3015045179054141,
+      "spanish": 0.2878946950659156,
+      "korean": 0.3995447726920247
+    }
+  },
+  "model.layers.19.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 19,
+    "errors": {
+      "english": 0.46724758204072714,
+      "arabic": 0.6737667564302683,
+      "japanese": 0.6784118171781301,
+      "chinese": 0.639294964261353,
+      "french": 0.5520034013316035,
+      "spanish": 0.5342404274269938,
+      "korean": 0.7177928853780031
+    }
+  },
+  "model.layers.19.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 19,
+    "errors": {
+      "english": 0.6121848365291953,
+      "arabic": 0.8466882240027189,
+      "japanese": 0.8758115824311972,
+      "chinese": 0.7892715074121952,
+      "french": 0.6754022017121315,
+      "spanish": 0.654966939240694,
+      "korean": 0.9090575929731131
+    }
+  },
+  "model.layers.19.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 19,
+    "errors": {
+      "english": 0.3604587921872735,
+      "arabic": 0.4982471251860261,
+      "japanese": 0.5075729927048087,
+      "chinese": 0.4990241201594472,
+      "french": 0.4212647061794996,
+      "spanish": 0.4074358707293868,
+      "korean": 0.5319729335606098
+    }
+  },
+  "model.layers.19.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 19,
+    "errors": {
+      "english": 0.5852364599704742,
+      "arabic": 0.7984949834644794,
+      "japanese": 0.7996771838515997,
+      "chinese": 0.7656871546059847,
+      "french": 0.6701752059161663,
+      "spanish": 0.6581229288130999,
+      "korean": 0.8258365448564291
+    }
+  },
+  "model.layers.19.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 19,
+    "errors": {
+      "english": 0.7825878281146288,
+      "arabic": 1.0073208957910538,
+      "japanese": 1.0137150529772043,
+      "chinese": 0.9479157589375973,
+      "french": 0.8454036563634872,
+      "spanish": 0.8432116899639368,
+      "korean": 1.0313847679644823
+    }
+  },
+  "model.layers.20.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 20,
+    "errors": {
+      "english": 0.26102478615939617,
+      "arabic": 0.37942327465862036,
+      "japanese": 0.3842819659039378,
+      "chinese": 0.36530403699725866,
+      "french": 0.31448708288371563,
+      "spanish": 0.3038363680243492,
+      "korean": 0.4030846506357193
+    }
+  },
+  "model.layers.20.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 20,
+    "errors": {
+      "english": 0.21254160813987255,
+      "arabic": 0.3148769624531269,
+      "japanese": 0.32800143118947744,
+      "chinese": 0.31230926141142845,
+      "french": 0.2619619476608932,
+      "spanish": 0.25003752717748284,
+      "korean": 0.3455099817365408
+    }
+  },
+  "model.layers.20.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 20,
+    "errors": {
+      "english": 0.6212861612439156,
+      "arabic": 0.8566429354250431,
+      "japanese": 0.8505696058273315,
+      "chinese": 0.8242011647671461,
+      "french": 0.7189308945089579,
+      "spanish": 0.7059502974152565,
+      "korean": 0.8890801947563887
+    }
+  },
+  "model.layers.20.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 20,
+    "errors": {
+      "english": 0.771459611132741,
+      "arabic": 1.035805495455861,
+      "japanese": 1.0193522982299328,
+      "chinese": 0.9278379864990711,
+      "french": 0.8094489891082048,
+      "spanish": 0.805378807708621,
+      "korean": 1.0419755447655916
+    }
+  },
+  "model.layers.20.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 20,
+    "errors": {
+      "english": 0.33295311871916056,
+      "arabic": 0.46769965440034866,
+      "japanese": 0.4791909456253052,
+      "chinese": 0.4781216997653246,
+      "french": 0.3944148551672697,
+      "spanish": 0.3795469058677554,
+      "korean": 0.5022752396762371
+    }
+  },
+  "model.layers.20.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 20,
+    "errors": {
+      "english": 0.5882872827351093,
+      "arabic": 0.8000293616205454,
+      "japanese": 0.8019560128450394,
+      "chinese": 0.7728802356868982,
+      "french": 0.6704806555062532,
+      "spanish": 0.6590278670191765,
+      "korean": 0.8314715679734945
+    }
+  },
+  "model.layers.20.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 20,
+    "errors": {
+      "english": 0.7461296264082193,
+      "arabic": 0.9648771323263645,
+      "japanese": 0.9758204538375139,
+      "chinese": 0.926024541258812,
+      "french": 0.8254557363688946,
+      "spanish": 0.8175233490765095,
+      "korean": 0.9961704201996326
+    }
+  },
+  "model.layers.21.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 21,
+    "errors": {
+      "english": 0.3491261852905154,
+      "arabic": 0.5067603755742311,
+      "japanese": 0.5125034311786294,
+      "chinese": 0.47840598225593567,
+      "french": 0.42169112525880337,
+      "spanish": 0.40635023452341557,
+      "korean": 0.5401233779266477
+    }
+  },
+  "model.layers.21.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 21,
+    "errors": {
+      "english": 0.2935053454712033,
+      "arabic": 0.44617969635874033,
+      "japanese": 0.4512464376166463,
+      "chinese": 0.4291695700958371,
+      "french": 0.36716373451054096,
+      "spanish": 0.3510769084095955,
+      "korean": 0.4809836335480213
+    }
+  },
+  "model.layers.21.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 21,
+    "errors": {
+      "english": 0.5634419191628695,
+      "arabic": 0.8103087525814772,
+      "japanese": 0.8115499541163445,
+      "chinese": 0.7741445973515511,
+      "french": 0.6802441235631704,
+      "spanish": 0.6570638697594404,
+      "korean": 0.8560608513653278
+    }
+  },
+  "model.layers.21.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 21,
+    "errors": {
+      "english": 0.6730127669870853,
+      "arabic": 0.944539375603199,
+      "japanese": 0.9968555755913258,
+      "chinese": 0.8418595101684332,
+      "french": 0.7885058987885714,
+      "spanish": 0.7573081888258457,
+      "korean": 0.9817273821681738
+    }
+  },
+  "model.layers.21.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 21,
+    "errors": {
+      "english": 0.32403809670358896,
+      "arabic": 0.45060508884489536,
+      "japanese": 0.4615142811089754,
+      "chinese": 0.4651339137926698,
+      "french": 0.3854511119425297,
+      "spanish": 0.3725413866341114,
+      "korean": 0.48548636585474014
+    }
+  },
+  "model.layers.21.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 21,
+    "errors": {
+      "english": 0.5871727485209703,
+      "arabic": 0.7890263833105564,
+      "japanese": 0.8026974499225616,
+      "chinese": 0.7733033932745457,
+      "french": 0.6703628338873386,
+      "spanish": 0.6564087253063917,
+      "korean": 0.8308374062180519
+    }
+  },
+  "model.layers.21.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 21,
+    "errors": {
+      "english": 0.7557282987982035,
+      "arabic": 1.0045636035501957,
+      "japanese": 1.0529960095882416,
+      "chinese": 0.9543043915182352,
+      "french": 0.852286821231246,
+      "spanish": 0.840630479156971,
+      "korean": 1.046706672757864
+    }
+  },
+  "model.layers.22.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 22,
+    "errors": {
+      "english": 0.30792159028351307,
+      "arabic": 0.4350440474227071,
+      "japanese": 0.4419201882556081,
+      "chinese": 0.4198146751150489,
+      "french": 0.36994261015206575,
+      "spanish": 0.35528435837477446,
+      "korean": 0.46244499180465937
+    }
+  },
+  "model.layers.22.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 22,
+    "errors": {
+      "english": 0.31417073030024767,
+      "arabic": 0.467832894064486,
+      "japanese": 0.472441284917295,
+      "chinese": 0.4408403467386961,
+      "french": 0.384253335185349,
+      "spanish": 0.3689789595082402,
+      "korean": 0.5030620032921433
+    }
+  },
+  "model.layers.22.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 22,
+    "errors": {
+      "english": 0.5599117008969188,
+      "arabic": 0.7745470441877842,
+      "japanese": 0.7826940938830376,
+      "chinese": 0.7665067780762911,
+      "french": 0.6554868221282959,
+      "spanish": 0.6368969399482012,
+      "korean": 0.8155055772513151
+    }
+  },
+  "model.layers.22.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 22,
+    "errors": {
+      "english": 0.7457706145942211,
+      "arabic": 1.0805338993668556,
+      "japanese": 1.1817848943173885,
+      "chinese": 1.0070210993289948,
+      "french": 0.8887136559933424,
+      "spanish": 0.8881112467497587,
+      "korean": 1.2116533163934946
+    }
+  },
+  "model.layers.22.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 22,
+    "errors": {
+      "english": 0.33917203173041344,
+      "arabic": 0.4654900236055255,
+      "japanese": 0.47660769801586866,
+      "chinese": 0.4870656868442893,
+      "french": 0.40220767445862293,
+      "spanish": 0.38693907111883163,
+      "korean": 0.5003642179071903
+    }
+  },
+  "model.layers.22.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 22,
+    "errors": {
+      "english": 0.5990785900503397,
+      "arabic": 0.7960872333496809,
+      "japanese": 0.8126910608261824,
+      "chinese": 0.7922749817371368,
+      "french": 0.6839822344481945,
+      "spanish": 0.6680802218616009,
+      "korean": 0.839764753356576
+    }
+  },
+  "model.layers.22.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 22,
+    "errors": {
+      "english": 0.772102290764451,
+      "arabic": 0.9925146214663982,
+      "japanese": 1.0244809333235025,
+      "chinese": 0.9839177392423153,
+      "french": 0.8646697644144297,
+      "spanish": 0.8458943385630846,
+      "korean": 1.051174072548747
+    }
+  },
+  "model.layers.23.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 23,
+    "errors": {
+      "english": 0.25261505134403706,
+      "arabic": 0.34673175774514675,
+      "japanese": 0.3541877334937453,
+      "chinese": 0.3425198858603835,
+      "french": 0.298038381151855,
+      "spanish": 0.28785764519125223,
+      "korean": 0.3718115398660302
+    }
+  },
+  "model.layers.23.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 23,
+    "errors": {
+      "english": 0.2932458743453026,
+      "arabic": 0.41828300058841705,
+      "japanese": 0.42590414732694626,
+      "chinese": 0.3971503106877208,
+      "french": 0.35339511558413506,
+      "spanish": 0.34158049151301384,
+      "korean": 0.44974563736468554
+    }
+  },
+  "model.layers.23.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 23,
+    "errors": {
+      "english": 0.5399047126993537,
+      "arabic": 0.758475162088871,
+      "japanese": 0.7685716431587934,
+      "chinese": 0.7295038495212793,
+      "french": 0.6367070805281401,
+      "spanish": 0.6205874402076006,
+      "korean": 0.8044670894742012
+    }
+  },
+  "model.layers.23.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 23,
+    "errors": {
+      "english": 0.6306615993380547,
+      "arabic": 0.8771551474928856,
+      "japanese": 0.901218181475997,
+      "chinese": 0.8622965533286333,
+      "french": 0.7224255688488483,
+      "spanish": 0.68661705031991,
+      "korean": 0.9537969529628754
+    }
+  },
+  "model.layers.23.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 23,
+    "errors": {
+      "english": 0.3523758677765727,
+      "arabic": 0.4843034213408828,
+      "japanese": 0.49049369152635336,
+      "chinese": 0.4979981789365411,
+      "french": 0.41639948915690184,
+      "spanish": 0.40014266315847635,
+      "korean": 0.5155463265255094
+    }
+  },
+  "model.layers.23.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 23,
+    "errors": {
+      "english": 0.5886276606470346,
+      "arabic": 0.7759254928678274,
+      "japanese": 0.7822470963001251,
+      "chinese": 0.7721080090850592,
+      "french": 0.6687275785952806,
+      "spanish": 0.6522462926805019,
+      "korean": 0.8103364408016205
+    }
+  },
+  "model.layers.23.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 23,
+    "errors": {
+      "english": 0.7500686850398779,
+      "arabic": 0.9359154030680656,
+      "japanese": 0.9300566595047712,
+      "chinese": 0.9400686714798212,
+      "french": 0.8317140322178602,
+      "spanish": 0.816760404035449,
+      "korean": 0.9573965910822153
+    }
+  },
+  "model.layers.24.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 24,
+    "errors": {
+      "english": 0.21431723795831203,
+      "arabic": 0.30145825538784266,
+      "japanese": 0.30572547763586044,
+      "chinese": 0.29970678221434355,
+      "french": 0.25731569994241,
+      "spanish": 0.24884563824161887,
+      "korean": 0.32517921552062035
+    }
+  },
+  "model.layers.24.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 24,
+    "errors": {
+      "english": 0.25881491834297776,
+      "arabic": 0.3868380719795823,
+      "japanese": 0.38702008780092,
+      "chinese": 0.3713424550369382,
+      "french": 0.3212628699839115,
+      "spanish": 0.30968936160206795,
+      "korean": 0.41454167664051056
+    }
+  },
+  "model.layers.24.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 24,
+    "errors": {
+      "english": 0.5545528614893556,
+      "arabic": 0.7904766332358122,
+      "japanese": 0.8143268674612045,
+      "chinese": 0.8002523668110371,
+      "french": 0.6793560795485973,
+      "spanish": 0.6527160033583641,
+      "korean": 0.8547697905451059
+    }
+  },
+  "model.layers.24.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 24,
+    "errors": {
+      "english": 0.5896178912371397,
+      "arabic": 0.7878109570592642,
+      "japanese": 0.8447381369769573,
+      "chinese": 0.7730537001043558,
+      "french": 0.6704296804964542,
+      "spanish": 0.6463017724454403,
+      "korean": 0.8580872416496277
+    }
+  },
+  "model.layers.24.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 24,
+    "errors": {
+      "english": 0.337037255987525,
+      "arabic": 0.46970489900559187,
+      "japanese": 0.4773668134585023,
+      "chinese": 0.48481025733053684,
+      "french": 0.4007163643836975,
+      "spanish": 0.3874402353540063,
+      "korean": 0.5023077903315425
+    }
+  },
+  "model.layers.24.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 24,
+    "errors": {
+      "english": 0.5436711562797427,
+      "arabic": 0.7328862156718969,
+      "japanese": 0.7388269156217575,
+      "chinese": 0.7395928911864758,
+      "french": 0.6303795836865902,
+      "spanish": 0.6128764823079109,
+      "korean": 0.7718114349991083
+    }
+  },
+  "model.layers.24.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 24,
+    "errors": {
+      "english": 0.7179653774946928,
+      "arabic": 0.909261567518115,
+      "japanese": 0.9177142065018415,
+      "chinese": 0.8993791379034519,
+      "french": 0.7915184032171965,
+      "spanish": 0.786166112869978,
+      "korean": 0.9470459464937449
+    }
+  },
+  "model.layers.25.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 25,
+    "errors": {
+      "english": 0.26903959969058633,
+      "arabic": 0.39572033658623695,
+      "japanese": 0.4028915883973241,
+      "chinese": 0.3889193618670106,
+      "french": 0.33046649396419525,
+      "spanish": 0.31620269641280174,
+      "korean": 0.4302491061389446
+    }
+  },
+  "model.layers.25.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 25,
+    "errors": {
+      "english": 0.27942786645144224,
+      "arabic": 0.44225517846643925,
+      "japanese": 0.44936444517225027,
+      "chinese": 0.4279352445155382,
+      "french": 0.35479081608355045,
+      "spanish": 0.34204536210745573,
+      "korean": 0.489583196118474
+    }
+  },
+  "model.layers.25.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 25,
+    "errors": {
+      "english": 0.5132316229864955,
+      "arabic": 0.7629719749093056,
+      "japanese": 0.7687885519117117,
+      "chinese": 0.7586081717163324,
+      "french": 0.6330387573689222,
+      "spanish": 0.61006049066782,
+      "korean": 0.8099361900240183
+    }
+  },
+  "model.layers.25.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 25,
+    "errors": {
+      "english": 0.7775506861507893,
+      "arabic": 1.1245904937386513,
+      "japanese": 1.1647715605795383,
+      "chinese": 0.9609877206385136,
+      "french": 0.8451199401170015,
+      "spanish": 0.8644764218479395,
+      "korean": 1.171340174973011
+    }
+  },
+  "model.layers.25.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 25,
+    "errors": {
+      "english": 0.3197916019707918,
+      "arabic": 0.44048949237912893,
+      "japanese": 0.45087304525077343,
+      "chinese": 0.46073595993220806,
+      "french": 0.37869524396955967,
+      "spanish": 0.36595388781279325,
+      "korean": 0.4760596211999655
+    }
+  },
+  "model.layers.25.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 25,
+    "errors": {
+      "english": 0.5384787321090698,
+      "arabic": 0.7179225813597441,
+      "japanese": 0.7332545984536409,
+      "chinese": 0.7348153851926327,
+      "french": 0.622691448777914,
+      "spanish": 0.6062564067542553,
+      "korean": 0.7649891152977943
+    }
+  },
+  "model.layers.25.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 25,
+    "errors": {
+      "english": 0.690972451120615,
+      "arabic": 0.8857324961572886,
+      "japanese": 0.9295621123164892,
+      "chinese": 0.9206901025027037,
+      "french": 0.7806353196501732,
+      "spanish": 0.763778967782855,
+      "korean": 0.9552821405231953
+    }
+  },
+  "model.layers.26.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 26,
+    "errors": {
+      "english": 0.2332932073622942,
+      "arabic": 0.32860861998051405,
+      "japanese": 0.32858935091644526,
+      "chinese": 0.32977042999118567,
+      "french": 0.28065845323726535,
+      "spanish": 0.27128018951043487,
+      "korean": 0.3507342925295234
+    }
+  },
+  "model.layers.26.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 26,
+    "errors": {
+      "english": 0.25913097243756056,
+      "arabic": 0.3903474621474743,
+      "japanese": 0.387613738887012,
+      "chinese": 0.37669266387820244,
+      "french": 0.324118060991168,
+      "spanish": 0.31365773640573025,
+      "korean": 0.4198843287304044
+    }
+  },
+  "model.layers.26.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 26,
+    "errors": {
+      "english": 0.572126941755414,
+      "arabic": 0.8179945573210716,
+      "japanese": 0.826726408675313,
+      "chinese": 0.8107588365674019,
+      "french": 0.7035369370132685,
+      "spanish": 0.6758972443640232,
+      "korean": 0.873784689232707
+    }
+  },
+  "model.layers.26.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 26,
+    "errors": {
+      "english": 0.6249069329351187,
+      "arabic": 0.8619961738586426,
+      "japanese": 0.9016798045486212,
+      "chinese": 0.8735904488712549,
+      "french": 0.7380519490689039,
+      "spanish": 0.7091201916337013,
+      "korean": 0.9461108781397343
+    }
+  },
+  "model.layers.26.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 26,
+    "errors": {
+      "english": 0.3118025157600641,
+      "arabic": 0.423406389541924,
+      "japanese": 0.43007736932486296,
+      "chinese": 0.4484031042084098,
+      "french": 0.36333307810127735,
+      "spanish": 0.35167274717241526,
+      "korean": 0.45073878299444914
+    }
+  },
+  "model.layers.26.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 26,
+    "errors": {
+      "english": 0.5284795574843884,
+      "arabic": 0.6972319670021534,
+      "japanese": 0.7091856431216002,
+      "chinese": 0.7271843329071999,
+      "french": 0.6091139931231737,
+      "spanish": 0.5938182640820742,
+      "korean": 0.7385011315345764
+    }
+  },
+  "model.layers.26.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 26,
+    "errors": {
+      "english": 0.660449430346489,
+      "arabic": 0.8211326226592064,
+      "japanese": 0.8530001975595951,
+      "chinese": 0.8607038147747517,
+      "french": 0.7284635901451111,
+      "spanish": 0.7248757127672434,
+      "korean": 0.8819396980106831
+    }
+  },
+  "model.layers.27.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 27,
+    "errors": {
+      "english": 0.1001106530893594,
+      "arabic": 0.14265645947307348,
+      "japanese": 0.1513354468625039,
+      "chinese": 0.15563039993867278,
+      "french": 0.12209511455148458,
+      "spanish": 0.1177882666233927,
+      "korean": 0.15844509517773986
+    }
+  },
+  "model.layers.27.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 27,
+    "errors": {
+      "english": 0.10521825239993632,
+      "arabic": 0.15639719180762768,
+      "japanese": 0.16551578231155872,
+      "chinese": 0.15767218172550201,
+      "french": 0.13126422557979822,
+      "spanish": 0.1258627292700112,
+      "korean": 0.1761180073954165
+    }
+  },
+  "model.layers.27.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 27,
+    "errors": {
+      "english": 0.5322818318381906,
+      "arabic": 0.703523937612772,
+      "japanese": 0.7322021462023258,
+      "chinese": 0.7447635252028704,
+      "french": 0.6125926300883293,
+      "spanish": 0.5981056839227676,
+      "korean": 0.7602349352091551
+    }
+  },
+  "model.layers.27.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 27,
+    "errors": {
+      "english": 0.5017628250643611,
+      "arabic": 0.6732287351042032,
+      "japanese": 0.6999016795307398,
+      "chinese": 0.6989158121868968,
+      "french": 0.5594714814797044,
+      "spanish": 0.5654865745455027,
+      "korean": 0.7441054508090019
+    }
+  },
+  "model.layers.27.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 27,
+    "errors": {
+      "english": 0.2956452164798975,
+      "arabic": 0.40060787461698055,
+      "japanese": 0.41251708753407,
+      "chinese": 0.43075633607804775,
+      "french": 0.34109953977167606,
+      "spanish": 0.3325499901548028,
+      "korean": 0.4331814059987664
+    }
+  },
+  "model.layers.27.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 27,
+    "errors": {
+      "english": 0.4822232909500599,
+      "arabic": 0.6280358266085386,
+      "japanese": 0.6537355594336987,
+      "chinese": 0.6776328515261412,
+      "french": 0.5534680234268308,
+      "spanish": 0.5381328733637929,
+      "korean": 0.6787274945527315
+    }
+  },
+  "model.layers.27.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 27,
+    "errors": {
+      "english": 0.6130570322275162,
+      "arabic": 0.7646366041153669,
+      "japanese": 0.7693933714181185,
+      "chinese": 0.8150703348219395,
+      "french": 0.6716110724955797,
+      "spanish": 0.6666121520102024,
+      "korean": 0.7838179673999548
+    }
+  },
+  "model.layers.28.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 28,
+    "errors": {
+      "english": 0.24871479719877243,
+      "arabic": 0.34988008439540863,
+      "japanese": 0.35857710521668196,
+      "chinese": 0.3538584243506193,
+      "french": 0.29440469946712255,
+      "spanish": 0.28626716462895274,
+      "korean": 0.38057710882276297
+    }
+  },
+  "model.layers.28.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 28,
+    "errors": {
+      "english": 0.2596879815682769,
+      "arabic": 0.39049585070461035,
+      "japanese": 0.3868147898465395,
+      "chinese": 0.3735816003754735,
+      "french": 0.32001510076224804,
+      "spanish": 0.31056677736341953,
+      "korean": 0.4191979132592678
+    }
+  },
+  "model.layers.28.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 28,
+    "errors": {
+      "english": 0.5484537575393915,
+      "arabic": 0.7791695352643728,
+      "japanese": 0.7900521215051413,
+      "chinese": 0.7768983915448189,
+      "french": 0.6476206015795469,
+      "spanish": 0.6317364387214184,
+      "korean": 0.8188102766871452
+    }
+  },
+  "model.layers.28.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 28,
+    "errors": {
+      "english": 0.6338257789611816,
+      "arabic": 0.8957555256783962,
+      "japanese": 0.9548709634691477,
+      "chinese": 0.9030581433326006,
+      "french": 0.7076147524639964,
+      "spanish": 0.684831902384758,
+      "korean": 1.0249557215720415
+    }
+  },
+  "model.layers.28.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 28,
+    "errors": {
+      "english": 0.29133597342297435,
+      "arabic": 0.3953014528378844,
+      "japanese": 0.4182052295655012,
+      "chinese": 0.4361469652503729,
+      "french": 0.3372853910550475,
+      "spanish": 0.33032330591231585,
+      "korean": 0.43401905056089163
+    }
+  },
+  "model.layers.28.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 28,
+    "errors": {
+      "english": 0.47122248634696007,
+      "arabic": 0.6169040761888027,
+      "japanese": 0.6455954164266586,
+      "chinese": 0.6822210438549519,
+      "french": 0.5408899364992976,
+      "spanish": 0.5267374692484736,
+      "korean": 0.664348192512989
+    }
+  },
+  "model.layers.28.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 28,
+    "errors": {
+      "english": 0.6042175982147455,
+      "arabic": 0.7010741271078587,
+      "japanese": 0.7705448437482119,
+      "chinese": 0.831967307254672,
+      "french": 0.6645720824599266,
+      "spanish": 0.648676423355937,
+      "korean": 0.7921502310782671
+    }
+  },
+  "model.layers.29.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 29,
+    "errors": {
+      "english": 0.25845012348145247,
+      "arabic": 0.37347610853612423,
+      "japanese": 0.37026633135974407,
+      "chinese": 0.3737258594483137,
+      "french": 0.3095938842743635,
+      "spanish": 0.3028773898258805,
+      "korean": 0.394832706078887
+    }
+  },
+  "model.layers.29.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 29,
+    "errors": {
+      "english": 0.19651578878983855,
+      "arabic": 0.30745784658938646,
+      "japanese": 0.30647709034383297,
+      "chinese": 0.2985095642507076,
+      "french": 0.24834051495417953,
+      "spanish": 0.24078309396281838,
+      "korean": 0.33696299232542515
+    }
+  },
+  "model.layers.29.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 29,
+    "errors": {
+      "english": 0.48263608384877443,
+      "arabic": 0.7197091821581125,
+      "japanese": 0.7538534495979548,
+      "chinese": 0.7474960703402758,
+      "french": 0.6098177582025528,
+      "spanish": 0.5849582366645336,
+      "korean": 0.7875113654881716
+    }
+  },
+  "model.layers.29.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 29,
+    "errors": {
+      "english": 0.6339109353721142,
+      "arabic": 0.9350626431405544,
+      "japanese": 0.9829926379024982,
+      "chinese": 0.9237401336431503,
+      "french": 0.7841819524765015,
+      "spanish": 0.7550352104008198,
+      "korean": 1.065727110952139
+    }
+  },
+  "model.layers.29.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 29,
+    "errors": {
+      "english": 0.28139321645721793,
+      "arabic": 0.38405254762619734,
+      "japanese": 0.4096539868041873,
+      "chinese": 0.43254251405596733,
+      "french": 0.3256544414907694,
+      "spanish": 0.31963437143713236,
+      "korean": 0.4236930347979069
+    }
+  },
+  "model.layers.29.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 29,
+    "errors": {
+      "english": 0.4621474351733923,
+      "arabic": 0.5900858715176582,
+      "japanese": 0.6167298462241888,
+      "chinese": 0.6693988144397736,
+      "french": 0.5193275026977062,
+      "spanish": 0.5074711563065648,
+      "korean": 0.6382140219211578
+    }
+  },
+  "model.layers.29.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 29,
+    "errors": {
+      "english": 0.5881577404215932,
+      "arabic": 0.7270684503018856,
+      "japanese": 0.7471358608454466,
+      "chinese": 0.7951893638819456,
+      "french": 0.6417842246592045,
+      "spanish": 0.6317818202078342,
+      "korean": 0.7668443620204926
+    }
+  },
+  "model.layers.30.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 30,
+    "errors": {
+      "english": 0.23781100194901228,
+      "arabic": 0.3538310443982482,
+      "japanese": 0.35353966150432825,
+      "chinese": 0.35648511722683907,
+      "french": 0.289225319866091,
+      "spanish": 0.28477200493216515,
+      "korean": 0.3784920610487461
+    }
+  },
+  "model.layers.30.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 30,
+    "errors": {
+      "english": 0.2624917491339147,
+      "arabic": 0.40942217968404293,
+      "japanese": 0.4120030850172043,
+      "chinese": 0.39300848823040724,
+      "french": 0.3294543297961354,
+      "spanish": 0.32249350287020206,
+      "korean": 0.44994412176311016
+    }
+  },
+  "model.layers.30.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 30,
+    "errors": {
+      "english": 0.43769148364663124,
+      "arabic": 0.6368924267590046,
+      "japanese": 0.6349670141935349,
+      "chinese": 0.6432781480252743,
+      "french": 0.5229540495201945,
+      "spanish": 0.5145744681358337,
+      "korean": 0.6561333537101746
+    }
+  },
+  "model.layers.30.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 30,
+    "errors": {
+      "english": 0.6350644901394844,
+      "arabic": 1.0155400764197111,
+      "japanese": 0.9906942266970873,
+      "chinese": 0.9451729990541935,
+      "french": 0.7792985085397959,
+      "spanish": 0.7749559171497822,
+      "korean": 1.0457668714225292
+    }
+  },
+  "model.layers.30.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 30,
+    "errors": {
+      "english": 0.27353104297071695,
+      "arabic": 0.37219398748129606,
+      "japanese": 0.40259013418108225,
+      "chinese": 0.42644081823527813,
+      "french": 0.31200302205979824,
+      "spanish": 0.30552090518176556,
+      "korean": 0.4117563618347049
+    }
+  },
+  "model.layers.30.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 30,
+    "errors": {
+      "english": 0.41960895992815495,
+      "arabic": 0.5315076848492026,
+      "japanese": 0.570474237203598,
+      "chinese": 0.6283124834299088,
+      "french": 0.46765314787626266,
+      "spanish": 0.4555468475446105,
+      "korean": 0.5845139659941196
+    }
+  },
+  "model.layers.30.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 30,
+    "errors": {
+      "english": 0.29414642229676247,
+      "arabic": 0.49039294105023146,
+      "japanese": 0.5087864119559526,
+      "chinese": 0.5262783728539944,
+      "french": 0.3434352329932153,
+      "spanish": 0.48549569910392165,
+      "korean": 0.5650528343394399
+    }
+  },
+  "model.layers.31.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 31,
+    "errors": {
+      "english": 0.2857378665357828,
+      "arabic": 0.41950145177543163,
+      "japanese": 0.4166952297091484,
+      "chinese": 0.4105914467945695,
+      "french": 0.33799162320792675,
+      "spanish": 0.33025012165308,
+      "korean": 0.44062909111380577
+    }
+  },
+  "model.layers.31.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 31,
+    "errors": {
+      "english": 0.26422674721106887,
+      "arabic": 0.42794895358383656,
+      "japanese": 0.41706753708422184,
+      "chinese": 0.3914485517889261,
+      "french": 0.33104313164949417,
+      "spanish": 0.3242352092638612,
+      "korean": 0.4582937015220523
+    }
+  },
+  "model.layers.31.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 31,
+    "errors": {
+      "english": 0.42627494037151337,
+      "arabic": 0.5856407089158893,
+      "japanese": 0.5881933402270079,
+      "chinese": 0.587092999368906,
+      "french": 0.4789518006145954,
+      "spanish": 0.4732604054734111,
+      "korean": 0.6009935550391674
+    }
+  },
+  "model.layers.31.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 31,
+    "errors": {
+      "english": 0.4778659790754318,
+      "arabic": 0.7502479180693626,
+      "japanese": 0.7196541707962751,
+      "chinese": 0.6481721000745893,
+      "french": 0.5572558827698231,
+      "spanish": 0.5323713552206755,
+      "korean": 0.7809710130095482
+    }
+  },
+  "model.layers.31.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 31,
+    "errors": {
+      "english": 0.2690584035590291,
+      "arabic": 0.3605018509551883,
+      "japanese": 0.39500696305185556,
+      "chinese": 0.41623299196362495,
+      "french": 0.3056257329881191,
+      "spanish": 0.2981640724465251,
+      "korean": 0.3990747397765517
+    }
+  },
+  "model.layers.31.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 31,
+    "errors": {
+      "english": 0.3903777040541172,
+      "arabic": 0.47843876481056213,
+      "japanese": 0.5349871050566435,
+      "chinese": 0.5912031382322311,
+      "french": 0.41819696221500635,
+      "spanish": 0.4085323680192232,
+      "korean": 0.5258698705583811
+    }
+  },
+  "model.layers.31.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 31,
+    "errors": {
+      "english": 0.48349591717123985,
+      "arabic": 0.6131218522787094,
+      "japanese": 0.66046610660851,
+      "chinese": 0.6950235236436129,
+      "french": 0.5244674934074283,
+      "spanish": 0.5109541639685631,
+      "korean": 0.6529425121843815
+    }
+  },
+  "model.layers.32.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 32,
+    "errors": {
+      "english": 0.30994589626789093,
+      "arabic": 0.44952751509845257,
+      "japanese": 0.45295861549675465,
+      "chinese": 0.4374637557193637,
+      "french": 0.36707303300499916,
+      "spanish": 0.35980644915252924,
+      "korean": 0.4797063320875168
+    }
+  },
+  "model.layers.32.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 32,
+    "errors": {
+      "english": 0.30592803470790386,
+      "arabic": 0.47655161283910275,
+      "japanese": 0.4656760562211275,
+      "chinese": 0.4428982026875019,
+      "french": 0.38204256910830736,
+      "spanish": 0.37877773493528366,
+      "korean": 0.5053408434614539
+    }
+  },
+  "model.layers.32.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 32,
+    "errors": {
+      "english": 0.4137957263737917,
+      "arabic": 0.5540946526452899,
+      "japanese": 0.5703329741954803,
+      "chinese": 0.5670799054205418,
+      "french": 0.4593831319361925,
+      "spanish": 0.4577398197725415,
+      "korean": 0.5673385169357061
+    }
+  },
+  "model.layers.32.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 32,
+    "errors": {
+      "english": 0.6249985722824931,
+      "arabic": 0.9115188848227262,
+      "japanese": 0.9301482830196619,
+      "chinese": 0.8285903017967939,
+      "french": 0.7341829035431147,
+      "spanish": 0.7060335446149111,
+      "korean": 0.9396925866603851
+    }
+  },
+  "model.layers.32.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 32,
+    "errors": {
+      "english": 0.2894411119632423,
+      "arabic": 0.3880349677056074,
+      "japanese": 0.43033512122929096,
+      "chinese": 0.44847214687615633,
+      "french": 0.3321693707257509,
+      "spanish": 0.32228176575154066,
+      "korean": 0.4372888347133994
+    }
+  },
+  "model.layers.32.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 32,
+    "errors": {
+      "english": 0.4094694871455431,
+      "arabic": 0.4750760244205594,
+      "japanese": 0.5483131557703018,
+      "chinese": 0.604629147797823,
+      "french": 0.4210617570206523,
+      "spanish": 0.40809733141213655,
+      "korean": 0.5324099520221353
+    }
+  },
+  "model.layers.32.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 32,
+    "errors": {
+      "english": 0.4989562323316932,
+      "arabic": 0.6420049257576466,
+      "japanese": 0.6905620489269495,
+      "chinese": 0.7118932045996189,
+      "french": 0.5379685657098889,
+      "spanish": 0.5082089575007558,
+      "korean": 0.6799547765403986
+    }
+  },
+  "model.layers.33.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 33,
+    "errors": {
+      "english": 0.3290590066462755,
+      "arabic": 0.472847118973732,
+      "japanese": 0.4716286398470402,
+      "chinese": 0.4524247841909528,
+      "french": 0.3796569425612688,
+      "spanish": 0.3698480296880007,
+      "korean": 0.5029308740049601
+    }
+  },
+  "model.layers.33.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 33,
+    "errors": {
+      "english": 0.3213924830779433,
+      "arabic": 0.4940672405064106,
+      "japanese": 0.4832825856283307,
+      "chinese": 0.4549609590321779,
+      "french": 0.39472257532179356,
+      "spanish": 0.390309632755816,
+      "korean": 0.5173631571233273
+    }
+  },
+  "model.layers.33.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 33,
+    "errors": {
+      "english": 0.41905130445957184,
+      "arabic": 0.5508923679590225,
+      "japanese": 0.566845515742898,
+      "chinese": 0.5716210212558508,
+      "french": 0.46272012311965227,
+      "spanish": 0.45923936273902655,
+      "korean": 0.5649775788187981
+    }
+  },
+  "model.layers.33.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 33,
+    "errors": {
+      "english": 0.5916992453858256,
+      "arabic": 0.8815808650106192,
+      "japanese": 0.8400267772376537,
+      "chinese": 0.7962044589221478,
+      "french": 0.6815952137112617,
+      "spanish": 0.6271770503371954,
+      "korean": 0.8941291496157646
+    }
+  },
+  "model.layers.33.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 33,
+    "errors": {
+      "english": 0.3112875632941723,
+      "arabic": 0.43831854220479727,
+      "japanese": 0.4640402961522341,
+      "chinese": 0.48282918240875006,
+      "french": 0.35756702441722155,
+      "spanish": 0.34150632098317146,
+      "korean": 0.48989545833319426
+    }
+  },
+  "model.layers.33.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 33,
+    "errors": {
+      "english": 0.4334586402401328,
+      "arabic": 0.5457105059176683,
+      "japanese": 0.5989594012498856,
+      "chinese": 0.6496701464056969,
+      "french": 0.4578352617099881,
+      "spanish": 0.4427734101191163,
+      "korean": 0.5994822401553392
+    }
+  },
+  "model.layers.33.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 33,
+    "errors": {
+      "english": 0.5647974796593189,
+      "arabic": 0.6996093392372131,
+      "japanese": 0.7812082748860121,
+      "chinese": 0.7998788300901651,
+      "french": 0.6315768212080002,
+      "spanish": 0.6131830606609583,
+      "korean": 0.7476246319711208
+    }
+  },
+  "model.layers.34.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 34,
+    "errors": {
+      "english": 0.25269901053979993,
+      "arabic": 0.37740861251950264,
+      "japanese": 0.3970848983153701,
+      "chinese": 0.38845430314540863,
+      "french": 0.31615420803427696,
+      "spanish": 0.3109727120026946,
+      "korean": 0.41101438738405704
+    }
+  },
+  "model.layers.34.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 34,
+    "errors": {
+      "english": 0.26674662390723825,
+      "arabic": 0.4163560289889574,
+      "japanese": 0.4322626292705536,
+      "chinese": 0.4131707679480314,
+      "french": 0.3393242321908474,
+      "spanish": 0.33629840333014727,
+      "korean": 0.4380406392738223
+    }
+  },
+  "model.layers.34.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 34,
+    "errors": {
+      "english": 0.5933566447347403,
+      "arabic": 0.7866331432014704,
+      "japanese": 0.8128098323941231,
+      "chinese": 0.8070530630648136,
+      "french": 0.6484834849834442,
+      "spanish": 0.6393343713134527,
+      "korean": 0.791654285043478
+    }
+  },
+  "model.layers.34.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 34,
+    "errors": {
+      "english": 0.44578390195965767,
+      "arabic": 0.6596972104161978,
+      "japanese": 0.6302546672523022,
+      "chinese": 0.6203781990334392,
+      "french": 0.5090024452656507,
+      "spanish": 0.5053486656397581,
+      "korean": 0.6822849148884416
+    }
+  },
+  "model.layers.34.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 34,
+    "errors": {
+      "english": 0.3271115515381098,
+      "arabic": 0.45248709339648485,
+      "japanese": 0.4992662761360407,
+      "chinese": 0.5045340694487095,
+      "french": 0.3913495419546962,
+      "spanish": 0.36944653559476137,
+      "korean": 0.5010552201420069
+    }
+  },
+  "model.layers.34.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 34,
+    "errors": {
+      "english": 0.407709589228034,
+      "arabic": 0.5452919714152813,
+      "japanese": 0.5972749311476946,
+      "chinese": 0.6077528819441795,
+      "french": 0.4568287255242467,
+      "spanish": 0.437639188952744,
+      "korean": 0.5784616377204657
+    }
+  },
+  "model.layers.34.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 34,
+    "errors": {
+      "english": 0.4891489325091243,
+      "arabic": 0.7647921647876501,
+      "japanese": 0.7927047461271286,
+      "chinese": 0.7834499534219503,
+      "french": 0.6351207979023457,
+      "spanish": 0.6218256801366806,
+      "korean": 0.8242328781634569
+    }
+  },
+  "model.layers.35.self_attn.q_proj": {
+    "layer_type": "attn",
+    "layer_index": 35,
+    "errors": {
+      "english": 0.2609848943538964,
+      "arabic": 0.3945297058671713,
+      "japanese": 0.42109659034758806,
+      "chinese": 0.3952918155118823,
+      "french": 0.3293669242411852,
+      "spanish": 0.3215073486790061,
+      "korean": 0.4278321573510766
+    }
+  },
+  "model.layers.35.self_attn.k_proj": {
+    "layer_type": "attn",
+    "layer_index": 35,
+    "errors": {
+      "english": 0.1955609698779881,
+      "arabic": 0.3245465694926679,
+      "japanese": 0.3427472598850727,
+      "chinese": 0.3159629791043699,
+      "french": 0.2640101979486644,
+      "spanish": 0.25762902572751045,
+      "korean": 0.343628172762692
+    }
+  },
+  "model.layers.35.self_attn.v_proj": {
+    "layer_type": "attn",
+    "layer_index": 35,
+    "errors": {
+      "english": 0.5432479260489345,
+      "arabic": 0.6946399342268705,
+      "japanese": 0.7721024919301271,
+      "chinese": 0.7830160409212112,
+      "french": 0.615525484085083,
+      "spanish": 0.5999889001250267,
+      "korean": 0.7373630236834288
+    }
+  },
+  "model.layers.35.self_attn.o_proj": {
+    "layer_type": "attn",
+    "layer_index": 35,
+    "errors": {
+      "english": 0.46324976719915867,
+      "arabic": 0.7384240031242371,
+      "japanese": 0.7663885075598955,
+      "chinese": 0.616508312523365,
+      "french": 0.54836855083704,
+      "spanish": 0.5376607924699783,
+      "korean": 0.823938887566328
+    }
+  },
+  "model.layers.35.mlp.gate_proj": {
+    "layer_type": "mlp",
+    "layer_index": 35,
+    "errors": {
+      "english": 0.21848205709829926,
+      "arabic": 0.40833365451544523,
+      "japanese": 0.451464980840683,
+      "chinese": 0.41542470920830965,
+      "french": 0.3185111191123724,
+      "spanish": 0.2953124921768904,
+      "korean": 0.44563734997063875
+    }
+  },
+  "model.layers.35.mlp.up_proj": {
+    "layer_type": "mlp",
+    "layer_index": 35,
+    "errors": {
+      "english": 0.36854404117912054,
+      "arabic": 0.5360120413824916,
+      "japanese": 0.567581981420517,
+      "chinese": 0.5421698158606887,
+      "french": 0.41885195299983025,
+      "spanish": 0.4005204876884818,
+      "korean": 0.564597231335938
+    }
+  },
+  "model.layers.35.mlp.down_proj": {
+    "layer_type": "mlp",
+    "layer_index": 35,
+    "errors": {
+      "english": 0.32806509640067816,
+      "arabic": 0.6964166555553675,
+      "japanese": 0.628662365488708,
+      "chinese": 0.5502025950700045,
+      "french": 0.47409423906356096,
+      "spanish": 0.5060941353440285,
+      "korean": 0.707391319796443
+    }
+  }
+}

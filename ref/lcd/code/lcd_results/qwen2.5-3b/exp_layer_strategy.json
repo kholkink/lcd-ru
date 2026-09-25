@@ -1,0 +1,75 @@
+{
+  "model": "Qwen/Qwen2.5-3B",
+  "rank": 2,
+  "steps": 500,
+  "languages": [
+    "arabic",
+    "japanese",
+    "chinese",
+    "korean"
+  ],
+  "fp16_ppl": {
+    "english": 13.755324144220783,
+    "arabic": 8.860737426724857,
+    "japanese": 10.89225394104672,
+    "chinese": 10.263998023718894,
+    "korean": 7.668155769725564
+  },
+  "int3_ppl": {
+    "english": 18.62989138495178,
+    "arabic": 39.51498519573971,
+    "japanese": 34.58839602157804,
+    "chinese": 22.63912942344281,
+    "korean": 27.784987309388285
+  },
+  "by_strategy": {
+    "all": {
+      "perplexity_corrected": {
+        "arabic": 13.593888660492452,
+        "japanese": 16.274326103558725,
+        "chinese": 20.300252045918004,
+        "korean": 11.337595992913007
+      },
+      "recovery_pct": {
+        "arabic": 84.55955837040034,
+        "japanese": 77.28713752550506,
+        "chinese": 18.89981853103383,
+        "korean": 81.7593530275744
+      },
+      "wall_time_sec": 592.8713927268982
+    },
+    "bottom_half": {
+      "perplexity_corrected": {
+        "arabic": 16.72335737349037,
+        "japanese": 17.951530272060925,
+        "chinese": 22.172326783022097,
+        "korean": 13.0708853959277
+      },
+      "recovery_pct": {
+        "arabic": 74.35063484182768,
+        "japanese": 70.20917452713078,
+        "chinese": 3.7721024960682636,
+        "korean": 73.14323771340425
+      },
+      "wall_time_sec": 491.7837336063385
+    },
+    "top_half": {
+      "perplexity_corrected": {
+        "arabic": 15.433116612943184,
+        "japanese": 18.416287363147504,
+        "chinese": 22.87417915791814,
+        "korean": 13.604977204223074
+      },
+      "recovery_pct": {
+        "arabic": 78.55964616798833,
+        "japanese": 68.24785487641675,
+        "chinese": -1.8993716259091409,
+        "korean": 70.48828776642901
+      },
+      "wall_time_sec": 439.6766023635864
+    }
+  },
+  "winner": "all",
+  "winner_avg_recovery_pct": 65.6264668636284,
+  "wall_time_min": 28.019405806064604
+}

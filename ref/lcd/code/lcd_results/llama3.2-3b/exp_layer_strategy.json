@@ -1,0 +1,75 @@
+{
+  "model": "meta-llama/Llama-3.2-3B",
+  "rank": 2,
+  "steps": 500,
+  "languages": [
+    "arabic",
+    "japanese",
+    "chinese",
+    "korean"
+  ],
+  "fp16_ppl": {
+    "english": 12.778048174735225,
+    "arabic": 12.979384150504712,
+    "japanese": 15.861492386152628,
+    "chinese": 11.982354205089173,
+    "korean": 12.733040086385465
+  },
+  "int3_ppl": {
+    "english": 17.03155044341489,
+    "arabic": 48.474395013626875,
+    "japanese": 46.988006907249655,
+    "chinese": 31.500266703009622,
+    "korean": 38.48361807270671
+  },
+  "by_strategy": {
+    "all": {
+      "perplexity_corrected": {
+        "arabic": 22.95422222708452,
+        "japanese": 24.892256806969097,
+        "chinese": 27.2467878826379,
+        "korean": 20.416950881849495
+      },
+      "recovery_pct": {
+        "arabic": 71.89791513222707,
+        "japanese": 70.98690759386,
+        "chinese": 21.79269335706322,
+        "korean": 70.16023951172772
+      },
+      "wall_time_sec": 484.51213693618774
+    },
+    "bottom_half": {
+      "perplexity_corrected": {
+        "arabic": 20.61319959895138,
+        "japanese": 21.07317904449758,
+        "chinese": 24.447421979605224,
+        "korean": 18.33108252846783
+      },
+      "recovery_pct": {
+        "arabic": 78.49327197592751,
+        "japanese": 83.25643992419211,
+        "chinese": 36.13524102106641,
+        "korean": 78.26051731710233
+      },
+      "wall_time_sec": 399.3869915008545
+    },
+    "top_half": {
+      "perplexity_corrected": {
+        "arabic": 34.19194990393667,
+        "japanese": 32.80321570207533,
+        "chinese": 35.449502037296114,
+        "korean": 28.788645206133044
+      },
+      "recovery_pct": {
+        "arabic": 40.23789474179053,
+        "japanese": 45.57140888858634,
+        "chinese": -20.233902240863433,
+        "korean": 37.64953498023872
+      },
+      "wall_time_sec": 365.4911961555481
+    }
+  },
+  "winner": "bottom_half",
+  "winner_avg_recovery_pct": 69.03636755957208,
+  "wall_time_min": 22.529089963436128
+}

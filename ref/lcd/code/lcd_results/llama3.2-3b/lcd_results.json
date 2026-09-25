@@ -1,0 +1,59 @@
+{
+  "model": "meta-llama/Llama-3.2-3B",
+  "results": {
+    "english": {
+      "fp16_ppl": 12.33,
+      "quant_ppl": 17.15,
+      "corrected_ppl": 17.15,
+      "recovery_pct": 0.0
+    },
+    "arabic": {
+      "fp16_ppl": 11.85,
+      "quant_ppl": 43.31,
+      "corrected_ppl": 18.1,
+      "recovery_pct": 80.13
+    },
+    "japanese": {
+      "fp16_ppl": 15.45,
+      "quant_ppl": 43.17,
+      "corrected_ppl": 22.96,
+      "recovery_pct": 72.91
+    },
+    "chinese": {
+      "fp16_ppl": 14.91,
+      "quant_ppl": 43.03,
+      "corrected_ppl": 21.54,
+      "recovery_pct": 76.42
+    },
+    "hindi": {
+      "fp16_ppl": 5.35,
+      "quant_ppl": 11.44,
+      "corrected_ppl": 7.26,
+      "recovery_pct": 68.64
+    },
+    "russian": {
+      "fp16_ppl": 7.74,
+      "quant_ppl": 18.46,
+      "corrected_ppl": 10.77,
+      "recovery_pct": 71.74
+    },
+    "french": {
+      "fp16_ppl": 11.14,
+      "quant_ppl": 19.09,
+      "corrected_ppl": 14.81,
+      "recovery_pct": 53.84
+    },
+    "spanish": {
+      "fp16_ppl": 10.42,
+      "quant_ppl": 17.31,
+      "corrected_ppl": 13.71,
+      "recovery_pct": 52.25
+    },
+    "korean": {
+      "fp16_ppl": 12.92,
+      "quant_ppl": 38.79,
+      "corrected_ppl": 18.94,
+      "recovery_pct": 76.73
+    }
+  }
+}

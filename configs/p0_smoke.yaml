@@ -1,0 +1,51 @@
+# Phase 0 end-to-end smoke run (PLAN.md §7, phase 0): Qwen2.5-0.5B, INT3-ours (LCD settings) + W4 sanity,
+# O1 and O3 trained on 32 texts, every metric on small fixed subsamples. Target: < 30 min on an L4.
+name: p0_smoke
+model: Qwen/Qwen2.5-0.5B
+seed: 0
+base:
+  kind: gptq-ours
+  name: int3ours-qwen2.5-0.5b-calib_en_128
+  calib: calib_en_128
+  calib_max_len: 512
+  quant: {bits: 3, group_size: 128, sym: true, percdamp: 0.01, act_order: false, true_sequential: false,
+          group_params: static, scale_bf16: true}
+w4_base:
+  kind: gptq-ours
+  name: int4ours-qwen2.5-0.5b-calib_en_128
+  calib: calib_en_128
+  calib_max_len: 512
+  quant: {bits: 4, group_size: 128, sym: true, percdamp: 0.01, group_params: static, scale_bf16: true}
+corrections: {rank: 2, placement: all, langs: [ru, en], init_std: 0.01}
+train:
+  lang: ru
+  data: train_ru_256
+  n_docs: 32
+  steps: 100
+  lr: 5.0e-4
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  grad_clip: 1.0
+  max_len: 512
+  doc_order: fixed
+  ckpt_every: 50
+  log_every: 25
+  eval_every: 50
+  val: val_ru_64
+  val_n: 16
+objectives:
+  O1: {}
+  O3: {lam: 1.0}
+eval:
+  batch_size: 8
+  ppl:
+    - {split: ppl_lcd_ru_256, n: 32}
+    - {split: ppl_ru_256, n: 32}
+    - {split: ppl_en_256, n: 32}
+    - {split: ppl_wiki_ru_256, n: 32}
+    - {split: ppl_gazeta_256, n: 32}
+  kl: {split: val_ru_64, n: 16, linears: true}
+  mmlu:
+    - {lang: ru, split: dev, n: 200}
+    - {lang: en, split: dev, n: 200}
+  rublimp: {subsample: rublimp_sub200, n_per: 20}

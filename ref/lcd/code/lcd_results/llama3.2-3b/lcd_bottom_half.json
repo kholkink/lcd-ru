@@ -1,0 +1,68 @@
+{
+  "model": "meta-llama/Llama-3.2-3B",
+  "rank": 2,
+  "steps": 500,
+  "group_size": 128,
+  "results": {
+    "english": {
+      "fp16_ppl": 12.778048174735225,
+      "quant_ppl": 15.974643583333052,
+      "corrected_ppl": 15.974643583333052,
+      "recovery_pct": 0.0
+    },
+    "arabic": {
+      "fp16_ppl": 12.979384150504712,
+      "quant_ppl": 39.23688408649063,
+      "corrected_ppl": 19.331266063414848,
+      "recovery_pct": 75.80926619672242
+    },
+    "japanese": {
+      "fp16_ppl": 15.861492386152628,
+      "quant_ppl": 44.945353325571084,
+      "corrected_ppl": 20.773704658091948,
+      "recovery_pct": 83.11017824568948
+    },
+    "chinese": {
+      "fp16_ppl": 11.982354205089173,
+      "quant_ppl": 33.34979441937077,
+      "corrected_ppl": 24.072497524022616,
+      "recovery_pct": 43.41791437023599
+    },
+    "hindi": {
+      "fp16_ppl": 4.7443423250114645,
+      "quant_ppl": 9.864233112075038,
+      "corrected_ppl": 8.407136259196177,
+      "recovery_pct": 28.459529968110008
+    },
+    "russian": {
+      "fp16_ppl": 7.650958878708666,
+      "quant_ppl": 18.326869773017908,
+      "corrected_ppl": 14.671264005643508,
+      "recovery_pct": 34.241628686906786
+    },
+    "french": {
+      "fp16_ppl": 9.664867051085942,
+      "quant_ppl": 13.468779884641817,
+      "corrected_ppl": 15.17126990282167,
+      "recovery_pct": -44.7562836656374
+    },
+    "spanish": {
+      "fp16_ppl": 11.902287296986964,
+      "quant_ppl": 17.526490802908025,
+      "corrected_ppl": 12.50369790127046,
+      "recovery_pct": 89.30674176973965
+    },
+    "korean": {
+      "fp16_ppl": 12.733040086385465,
+      "quant_ppl": 34.00763671209354,
+      "corrected_ppl": 17.01309729304787,
+      "recovery_pct": 79.8818408547854
+    },
+    "code": {
+      "fp16_ppl": 2.798464675446858,
+      "quant_ppl": 5.940997026952032,
+      "corrected_ppl": 4.332130856522185,
+      "recovery_pct": 51.19648711521621
+    }
+  }
+}

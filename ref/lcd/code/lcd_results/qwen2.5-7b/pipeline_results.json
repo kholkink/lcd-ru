@@ -1,0 +1,68 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "rank": 2,
+  "steps": 500,
+  "group_size": 128,
+  "results": {
+    "english": {
+      "fp16_ppl": 12.503683232209603,
+      "quant_ppl": 14.408365066378291,
+      "corrected_ppl": 14.408365066378291,
+      "recovery_pct": 0.0
+    },
+    "arabic": {
+      "fp16_ppl": 7.983217958784299,
+      "quant_ppl": 36.73520711129541,
+      "corrected_ppl": 11.348747206827397,
+      "recovery_pct": 88.29462118189078
+    },
+    "japanese": {
+      "fp16_ppl": 9.724733341049854,
+      "quant_ppl": 21.714295969052685,
+      "corrected_ppl": 14.03787269533222,
+      "recovery_pct": 64.02588244371321
+    },
+    "chinese": {
+      "fp16_ppl": 9.149648168285353,
+      "quant_ppl": 17.07341816798171,
+      "corrected_ppl": 17.73872955650518,
+      "recovery_pct": -8.396399549065215
+    },
+    "hindi": {
+      "fp16_ppl": 3.625804366322232,
+      "quant_ppl": 4.979472125809747,
+      "corrected_ppl": 5.422258595546945,
+      "recovery_pct": -32.71012895400811
+    },
+    "russian": {
+      "fp16_ppl": 5.280044047087077,
+      "quant_ppl": 9.021130212392574,
+      "corrected_ppl": 8.930190429681232,
+      "recovery_pct": 2.4308390315815
+    },
+    "french": {
+      "fp16_ppl": 7.972386280184086,
+      "quant_ppl": 9.358477881516405,
+      "corrected_ppl": 12.345966945503935,
+      "recovery_pct": -215.5333068258936
+    },
+    "spanish": {
+      "fp16_ppl": 9.332428991235014,
+      "quant_ppl": 12.203403605022578,
+      "corrected_ppl": 10.145520251189485,
+      "recovery_pct": 71.67891154280215
+    },
+    "korean": {
+      "fp16_ppl": 6.67432153903177,
+      "quant_ppl": 16.196498257656053,
+      "corrected_ppl": 9.46994514623946,
+      "recovery_pct": 70.64091866999516
+    },
+    "code": {
+      "fp16_ppl": 2.2691901730086848,
+      "quant_ppl": 3.6374374031848475,
+      "corrected_ppl": 3.1240139832079437,
+      "recovery_pct": 37.52417024157252
+    }
+  }
+}
