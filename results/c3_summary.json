@@ -1,0 +1,42 @@
+{
+ "qwen3b": {
+  "n": 14041,
+  "corr_damage": 0.4421600136734202,
+  "corr_damage_null_p99": 0.02018949977140515,
+  "corr_fp16_difficulty": 0.6706619563414356,
+  "corr_repair": 0.21425788580586863,
+  "mean_damage_ru": -0.3719105739882192,
+  "mean_damage_en": -0.4225989760448184,
+  "mean_repair_ru": 0.07320159816370157,
+  "mean_repair_en": 0.08005893560545743,
+  "lost_ru": 4892,
+  "gained_ru_by_chance": 1496,
+  "shared": 2289,
+  "shared_expected_if_independent": 2118.517639301022,
+  "ru_only": 2603,
+  "o1_recovers_shared": 0.2455220620358235,
+  "o1_recovers_ru_only": 0.38878217441413754,
+  "o1_en_recovers_lost_en": 0.2548227904890085,
+  "o1_breaks_ru_ok": 0.25009345794392523
+ },
+ "llama3b": {
+  "n": 14041,
+  "corr_damage": 0.254004904639527,
+  "corr_damage_null_p99": 0.022029753922477604,
+  "corr_fp16_difficulty": 0.5732970607536323,
+  "corr_repair": 0.1130001853604729,
+  "mean_damage_ru": -0.22584510884526307,
+  "mean_damage_en": -0.34987717383140177,
+  "mean_repair_ru": 0.07687548096156582,
+  "mean_repair_en": 0.09062222485032408,
+  "lost_ru": 3733,
+  "gained_ru_by_chance": 1867,
+  "shared": 1343,
+  "shared_expected_if_independent": 1229.5947855124584,
+  "ru_only": 2390,
+  "o1_recovers_shared": 0.2903946388682055,
+  "o1_recovers_ru_only": 0.35523012552301253,
+  "o1_en_recovers_lost_en": 0.27366906474820146,
+  "o1_breaks_ru_ok": 0.24264120922832141
+ }
+}

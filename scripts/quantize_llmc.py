@@ -39,14 +39,16 @@ def extract_state(model, bits: int, group_size: int) -> dict:
         zp = zp.detach().float().cpu() if zp is not None else torch.zeros_like(scale)
         s_full = scale.repeat_interleave(group_size, dim=1)[:, : W.shape[1]]
         z_full = zp.repeat_interleave(group_size, dim=1)[:, : W.shape[1]]
-        q = torch.round(W / s_full) + z_full  # signed codes (sym: -2^(b-1) .. 2^(b-1)-1)
+        ratio = W / s_full
+        q = torch.round(ratio) + z_full  # signed codes (sym: -2^(b-1) .. 2^(b-1)-1)
         off = 2 ** (bits - 1)
         codes = q + off
         if codes.min() < 0 or codes.max() > 2**bits - 1:
             raise ValueError(f"{name}: codes out of range [{codes.min()}, {codes.max()}]")
-        err = ((codes - off - z_full) * s_full - W).abs().max().item()
-        if err > 1e-2 * s_full.max().item():
-            raise ValueError(f"{name}: weights are not on the grid (max err {err})")
+        # bf16 storage rounds code * scale, so W / scale is an integer only up to a small fraction of a step
+        off_grid = (ratio - torch.round(ratio)).abs().max().item()
+        if off_grid > 0.25:
+            raise ValueError(f"{name}: weights are not on the grid (max {off_grid:.3f} of a step)")
         state[name] = {"codes": codes.to(torch.uint8), "scale": scale, "zero": torch.full_like(scale, off) + zp}
     return state
 
