@@ -100,6 +100,8 @@ class Worker:
             os.makedirs(os.path.join(self.status_dir, d), exist_ok=True)
         os.makedirs(os.path.join(self.home, "logs"), exist_ok=True)
         self.finished: dict[str, dict] = {}
+        self.prev_status: dict = {}
+        self.last_report = 0.0
         self.current: dict | None = None
         self.gpu_name = ""
         self.setup_tail = ""
@@ -130,7 +132,9 @@ class Worker:
             log("no earlier status dataset: fresh history")
             return
         with open(p) as f:
-            self.finished = json.load(f).get("finished", {})
+            prev = json.load(f)
+        self.finished = prev.get("finished", {})
+        self.prev_status = {k: prev.get(k) for k in ("state", "time_utc", "gpu")}
         for d in ("logs", "results"):
             if os.path.isdir(os.path.join(tmp, d)):
                 shutil.copytree(os.path.join(tmp, d), os.path.join(self.status_dir, d), dirs_exist_ok=True)
@@ -160,6 +164,7 @@ class Worker:
             time.sleep(60)
 
     def report(self, state: str, tail: str = "") -> None:
+        self.last_report = time.time()
         with self.lock:
             st = {
                 "worker": self.letter,
@@ -305,6 +310,21 @@ class Worker:
         return rc
 
     # ------------------------------------------------------------------ session
+    def other_worker_alive(self) -> bool:
+        """Two workers with the same letter would run the same jobs and overwrite each other's status. A live worker
+        reports at least every --report-minutes (also while idle), so a recent non-final status means it is alive."""
+        st, t = self.prev_status.get("state"), self.prev_status.get("time_utc")
+        if self.a.force or not t or st in ("stopped", "setup_failed", "other_worker_alive"):
+            return False
+        age = (dt.datetime.now(dt.timezone.utc) - dt.datetime.strptime(t, "%Y-%m-%d %H:%M:%S").replace(
+            tzinfo=dt.timezone.utc)).total_seconds() / 60  # fmt: skip
+        if age > self.a.report_minutes + 5:
+            return False
+        log(f"STOP: worker {self.letter} reported '{st}' {age:.0f} min ago on {self.prev_status.get('gpu') or '?'}: "
+            f"another session is probably running it. Close the other tab, or start with --force (or another --worker "
+            f"letter) if it is really dead.")  # fmt: skip
+        return True
+
     def gpu(self) -> str:
         r = run_quiet(["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader"], timeout=60)
         return r.stdout.strip() if r.returncode == 0 else ""
@@ -326,6 +346,9 @@ class Worker:
         log(f"worker {self.letter} on {self.gpu_name or 'CPU only'}; queue {self.a.user}/{self.a.jobs_dataset}; "
             f"idle limit {self.a.idle_minutes:.0f} min")  # fmt: skip
         self.restore_history()
+        if self.other_worker_alive():
+            self.release()  # do not burn compute units on a runtime that must not work
+            return
         if not self.a.skip_setup:
             self.refresh_code(None)
         rc = 0 if self.a.skip_setup else self.setup()
@@ -345,6 +368,8 @@ class Worker:
                     log(f"no jobs for worker {self.letter} for {idle:.0f} min: stopping")
                     break
                 log(f"no runnable jobs (idle {idle:.0f} min), next check in {self.a.poll_minutes:.0f} min")
+                if time.time() - self.last_report > self.a.report_minutes * 60:  # heartbeat while idle
+                    self.report("idle")
                 time.sleep(self.a.poll_minutes * 60)
                 continue
             self.refresh_code(job.get("code_version"))
@@ -353,14 +378,18 @@ class Worker:
             self.run_job(job)
             last_work = time.time()
         self.report("stopped")
-        if not self.a.no_unassign:
-            log("releasing the runtime")
-            try:
-                from google.colab import runtime
+        self.release()
 
-                runtime.unassign()
-            except Exception as e:  # noqa: BLE001  (not on Colab)
-                log(f"unassign skipped: {e}")
+    def release(self) -> None:
+        if self.a.no_unassign:
+            return
+        log("releasing the runtime")
+        try:
+            from google.colab import runtime
+
+            runtime.unassign()
+        except Exception as e:  # noqa: BLE001  (not on Colab)
+            log(f"unassign skipped: {e}")
 
 
 def worker_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -380,6 +409,7 @@ def worker_args(argv: list[str] | None = None) -> argparse.Namespace:
     ap.add_argument("--setup-artifacts", default="data", help="artifacts restored at session start")
     ap.add_argument("--no-unassign", action="store_true")
     ap.add_argument("--once", action="store_true", help="stop as soon as there is nothing to do (tests)")
+    ap.add_argument("--force", action="store_true", help="start even if another worker with this letter looks alive")
     return ap.parse_args(argv)
 
 
