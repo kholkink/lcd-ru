@@ -9,3 +9,4 @@ cache/
 *.pt
 *.safetensors
 .env
+results/items/

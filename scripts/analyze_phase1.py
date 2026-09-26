@@ -44,8 +44,16 @@ def sync() -> None:
     for jd in sorted(STATUS.glob("p1-*")):
         (ITEMS / jd.name).mkdir(parents=True, exist_ok=True)
         for p in jd.iterdir():
-            if p.name.endswith(".jsonl.gz"):
-                shutil.copy2(p, ITEMS / jd.name / p.name)
+            if "__mmlu_" in p.name:  # per-item MMLU: .jsonl.gz, or a dir holding the jsonl (kaggle --unzip gunzips)
+                src = p if p.is_file() else next(p.glob("*.jsonl"), None)
+                if src is None:
+                    continue
+                dst = ITEMS / jd.name / (p.name.split("__", 1)[1].removesuffix(".gz"))
+                if src.name.endswith(".gz"):
+                    with gzip.open(src, "rt") as fi, open(dst, "w") as fo:
+                        shutil.copyfileobj(fi, fo)
+                else:
+                    shutil.copy2(src, dst)
             elif p.name.endswith("results.jsonl"):
                 for line in p.read_text().splitlines():
                     r = json.loads(line)
@@ -68,13 +76,10 @@ def load() -> tuple[dict, dict]:
 
 
 def items(job: str, cond: str, lang: str, split: str = "full") -> list[dict] | None:
-    p = ITEMS / job / f"{job.replace('p1-', 'p1_').replace('-', '_')}__mmlu_{cond}_{lang}_{split}.jsonl.gz"
+    p = ITEMS / job / f"mmlu_{cond}_{lang}_{split}.jsonl"
     if not p.exists():
-        cands = list((ITEMS / job).glob(f"*mmlu_{cond}_{lang}_{split}.jsonl.gz")) if (ITEMS / job).exists() else []
-        if not cands:
-            return None
-        p = cands[0]
-    with gzip.open(p, "rt") as f:
+        return None
+    with open(p) as f:
         return [json.loads(line) for line in f]
 
 
