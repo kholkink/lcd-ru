@@ -18,6 +18,9 @@ import torch.nn as nn
 LCD_INT3 = {
     "Qwen/Qwen2.5-3B": "nrmlthms/qwen2.5-3b-int3-gptq",
     "meta-llama/Llama-3.2-3B": "nrmlthms/llama3.2-3b-int3-gptq",
+    # Meta declined gated access (2026-09-26): the unsloth mirror has byte-identical weights (same safetensors sha256)
+    # and identical tokenization (checked on 1176 docs + MMLU prompts); only pad_token_id / metadata differ.
+    "unsloth/Llama-3.2-3B": "nrmlthms/llama3.2-3b-int3-gptq",
 }
 
 
