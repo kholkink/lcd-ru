@@ -100,6 +100,11 @@ def env_info() -> dict:
     return info
 
 
+def expand_env(path: str) -> str:
+    """$LCDRU_RUNS etc. in config paths (the Colab worker sets them)."""
+    return os.path.expandvars(path)
+
+
 def now_utc() -> str:
     return f"{dt.datetime.now(dt.timezone.utc):%Y-%m-%dT%H:%M:%SZ}"
 

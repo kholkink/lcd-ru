@@ -18,7 +18,7 @@ import yaml
 from . import corrections as C
 from .data import load_texts
 from .models import LCD_INT3, load_base, load_hf, load_tokenizer
-from .utils import REPO, Timer, append_jsonl, device, run_record, set_seed
+from .utils import REPO, Timer, append_jsonl, device, expand_env, run_record, set_seed
 
 RUNS = Path(os.environ.get("LCDRU_RUNS", REPO / "runs"))
 
@@ -47,7 +47,7 @@ def ensure_quantized(model_id: str, base: dict, log=print) -> Path:
     """INT3-ours: quantize once (GPTQ on the calibration split) and store codes; reuse afterwards."""
     from .quant.gptq import QuantConfig, quantize_model, save_quant
 
-    out = Path(base["path"]) if base.get("path") else quant_base_dir(model_id, base)
+    out = Path(expand_env(base["path"])) if base.get("path") else quant_base_dir(model_id, base)
     if (out / "quant.safetensors").exists():
         return out
     qcfg = QuantConfig(**base.get("quant", {}))
@@ -160,7 +160,7 @@ def evaluate(cfg: dict, model, cond: str, lang: str | None, teacher=None, log=pr
         for p in ev.get("ppl", []):
             slot = use(p)
             r = PP.perplexity(model, tok, load_texts(p["split"], p.get("n")), int(p.get("max_len", 512)), bs)
-            out[f"ppl/{p['split']}{_tag(p)}"] = {k: v for k, v in r.items() if k != "per_doc"} | {"slot": slot}
+            out[f"ppl/{p['split']}{_tag(p)}"] = r | {"slot": slot}  # per_doc (NLL sum, tokens) kept for bootstrap CIs
             log(f"  [{cond}|{slot}] ppl {p['split']}: {r['ppl']:.3f} ({r['tokens']} tok)")
         for k in _as_list(ev.get("kl")):
             if teacher is None or teacher is model:

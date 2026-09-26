@@ -3,7 +3,7 @@
 scales, relative weight difference. Both use sym W3 g128 static minmax scales, so scales should match exactly and
 codes differ only through GPTQ's error feedback (calibration batches, numerics).
 
-    python scripts/compare_int3.py --config configs/p1/qwen3b.yaml
+    python scripts/compare_int3.py --config configs/p1/qwen3b.yaml [compare_path=$LCDRU_RUNS/<quant dir>]
 """
 
 import json
@@ -19,11 +19,12 @@ from safetensors.torch import load_file
 from src import pipeline
 from src.models import LCD_INT3
 from src.quant.gptq import _unpack
-from src.utils import Timer
+from src.utils import Timer, expand_env
 
 if __name__ == "__main__":
     cfg = _common.config_from_cli(__doc__)
-    ours = pipeline.ensure_quantized(cfg["model"], {**cfg["base_ours"], "kind": "gptq-ours"})
+    ours = (Path(expand_env(cfg["compare_path"])) if cfg.get("compare_path")
+            else pipeline.ensure_quantized(cfg["model"], {**cfg["base_ours"], "kind": "gptq-ours"}))  # fmt: skip
     info = json.loads((Path(ours) / "quant_config.json").read_text())
     t = load_file(str(Path(ours) / "quant.safetensors"))
     repo = LCD_INT3[cfg["model"]]

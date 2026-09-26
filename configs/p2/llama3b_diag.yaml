@@ -1,0 +1,14 @@
+# Phase 2 diagnostics on INT3-LCD: accumulated vs local block error, per-Linear e2e / local error, ru and en texts;
+# INT3 and INT3 + O1 (phase 1 corrections, 3 seeds; ru slot on both text sets).
+inherit: ../p1/llama3b.yaml
+base: {kind: lcd-int3}
+diag:
+  linears: true
+  texts:
+    - {split: val_ru_64, n: 64}
+    - {split: ppl_en_256, n: 64}
+  conditions:
+    - {cond: int3lcd}
+    - {cond: o1_s0, corrections: $LCDRU_RUNS/p1_llama3b_o1_s0/corrections.pt, slot: ru}
+    - {cond: o1_s1, corrections: $LCDRU_RUNS/p1_llama3b_o1_s1/corrections.pt, slot: ru}
+    - {cond: o1_s2, corrections: $LCDRU_RUNS/p1_llama3b_o1_s2/corrections.pt, slot: ru}

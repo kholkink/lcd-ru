@@ -4,6 +4,7 @@ datasets==5.0.1
 accelerate==1.15.0
 lm-eval==0.4.13
 compressed-tensors==0.19.0
+llmcompressor==0.14.0   # own quantizations with the author's tool (approved 2026-09-26)
 kaggle>=2.0
 pandas
 matplotlib

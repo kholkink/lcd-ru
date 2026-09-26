@@ -1,0 +1,5 @@
+# llm-compressor GPTQ with LCD's recipe (scripts/quantize_llmc.py); evaluated like INT3-ours in phase 1
+# (perplexities, KL on val, Global-MMLU dev) and compared code by code with the author's checkpoint.
+inherit: ../p1/llama3b_int3ours.yaml
+llmc: {name: int3llmc-llama3.2-3b-calib_en_128, calib: calib_en_128, bits: 3, group_size: 128, sym: true, damp: 0.01,
+       max_seq_length: 512, qac: true}
