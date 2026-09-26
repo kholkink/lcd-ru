@@ -48,6 +48,6 @@
 
 | Вариант | коды = автор | скейлы = автор | INT3/FP16 ppl ru (LCD) | INT3/FP16 ppl en (LCD) | MMLU ru dev | MMLU en dev |
 |---|---|---|---|---|---|---|
-| llm-compressor 0.14, qac=True | — | — | — | — | — | — |
-| llm-compressor 0.14, qac=False | — | — | — | — | — | — |
+| llm-compressor 0.14, qac=True | 82.4% | 100.0% | 1.765 | 1.363 | 26.25 | 37.75 |
+| llm-compressor 0.14, qac=False | 82.5% | 100.0% | 1.765 | 1.368 | 26.15 | 35.50 |
 | INT3-LCD (автор) | 100% | 100% | 2.100 | 1.355 | 30.20 | 41.30 |
