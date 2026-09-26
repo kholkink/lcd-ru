@@ -1,0 +1,40 @@
+# Phase 1 (LCD replication): shared settings. Model configs inherit this; the job command sets name, base, seed.
+seed: 0
+base: {kind: lcd-int3}
+base_ours:           # INT3-ours with LCD's settings (cross-check against INT3-LCD)
+  kind: gptq-ours
+  calib: calib_en_128
+  calib_max_len: 512
+  quant: {bits: 3, group_size: 128, sym: true, percdamp: 0.01, act_order: false, true_sequential: false,
+          group_params: static, scale_bf16: true}
+corrections: {rank: 2, placement: all, langs: [ru, en], init_std: 0.01}
+train:               # O1 = LCD: fixed hyperparameters, no grid search
+  objective: O1
+  lang: ru
+  data: train_ru_256
+  steps: 500
+  lr: 5.0e-4
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  grad_clip: 1.0
+  max_len: 512
+  doc_order: fixed
+  ckpt_every: 100
+  log_every: 50
+  eval_every: 0
+eval:                # every entry uses the condition's slot (ru) unless it sets `slot`; en with ru = control (b)
+  batch_size: 8
+  ppl:
+    - {split: ppl_lcd_ru_256}
+    - {split: ppl_lcd_en_256}
+    - {split: ppl_ru_256}
+    - {split: ppl_en_256}
+    - {split: ppl_wiki_ru_256}
+    - {split: ppl_gazeta_256}
+  kl:
+    - {split: val_ru_64, linears: true}
+    - {split: ppl_ru_256}
+  mmlu:
+    - {lang: ru, split: full, batch_size: 16}
+    - {lang: en, split: full, batch_size: 16}
+  rublimp: {subsample: null, batch_size: 64}

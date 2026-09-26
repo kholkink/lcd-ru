@@ -65,6 +65,14 @@ def ensure_quantized(model_id: str, base: dict, log=print) -> Path:
     return out
 
 
+def base_spec(cfg: dict) -> dict:
+    """cfg.base, completed from cfg.base_ours when it is an INT3-ours base given only by kind."""
+    base = dict(cfg["base"])
+    if base.get("kind") == "gptq-ours" and "quant" not in base:
+        base = {**cfg.get("base_ours", {}), **base}
+    return base
+
+
 def get_base(model_id: str, base: dict, log=print) -> torch.nn.Module:
     base = dict(base)
     if base.get("kind") == "gptq-ours":
@@ -110,8 +118,26 @@ def train(cfg: dict, student=None, teacher=None, log=print) -> dict:
 
 
 # ---------------------------------------------------------------------------- evaluation
+def _slot(entry: dict, lang: str | None) -> str | None:
+    """Correction slot for one eval entry: `slot: default` (the condition's language), `off`, or a language."""
+    slot = entry.get("slot", "default")
+    return lang if slot == "default" else None if slot == "off" else slot
+
+
+def _tag(entry: dict) -> str:
+    """Key suffix for entries that set their slot explicitly, so the same split can be evaluated with several slots."""
+    return f"@{entry['slot']}" if entry.get("slot", "default") != "default" else ""
+
+
+def _as_list(x) -> list:
+    return x if isinstance(x, list) else [x] if x else []
+
+
 def evaluate(cfg: dict, model, cond: str, lang: str | None, teacher=None, log=print) -> dict:
-    """Evaluate one condition (base model with the `lang` correction slot active, or None) on cfg['eval']."""
+    """Evaluate one condition on cfg['eval']: the base model with correction slot `lang` active (None = off).
+
+    Every entry may set `slot: default | off | <lang>`; the slot used is stored with each metric. KL / e_l entries
+    need a teacher (FP16) and are skipped when the evaluated model is the teacher itself."""
     from .eval import kl as KL
     from .eval import mmlu as MM
     from .eval import ppl as PP
@@ -121,35 +147,48 @@ def evaluate(cfg: dict, model, cond: str, lang: str | None, teacher=None, log=pr
     ev = cfg.get("eval", {})
     bs = int(ev.get("batch_size", 8))
     tok = load_tokenizer(cfg["model"])
-    if C.modules(model):
-        C.set_lang(model, lang)
+    corrected = bool(C.modules(model))
+
+    def use(entry):
+        slot = _slot(entry, lang) if corrected else None
+        if corrected:
+            C.set_lang(model, slot)
+        return slot
+
     out: dict = {}
     with Timer() as t:
         for p in ev.get("ppl", []):
+            slot = use(p)
             r = PP.perplexity(model, tok, load_texts(p["split"], p.get("n")), int(p.get("max_len", 512)), bs)
-            out[f"ppl/{p['split']}"] = {k: v for k, v in r.items() if k != "per_doc"}
-            log(f"  [{cond}] ppl {p['split']}: {r['ppl']:.3f} ({r['tokens']} tok)")
-        if ev.get("kl") and teacher is not None:
-            k = ev["kl"]
+            out[f"ppl/{p['split']}{_tag(p)}"] = {k: v for k, v in r.items() if k != "per_doc"} | {"slot": slot}
+            log(f"  [{cond}|{slot}] ppl {p['split']}: {r['ppl']:.3f} ({r['tokens']} tok)")
+        for k in _as_list(ev.get("kl")):
+            if teacher is None or teacher is model:
+                continue
+            slot = use(k)
             r = KL.teacher_agreement(model, teacher, tok, load_texts(k["split"], k.get("n")), int(k.get("max_len", 512)),
                                      batch_size=max(1, bs // 2), linears=bool(k.get("linears")))  # fmt: skip
-            out[f"kl/{k['split']}"] = r
-            log(f"  [{cond}] KL {k['split']}: {r['kl']:.4f}, top1 {r['top1']:.4f}, e_mean {r['e_mean']:.4f}")
+            out[f"kl/{k['split']}{_tag(k)}"] = r | {"slot": slot}
+            log(f"  [{cond}|{slot}] KL {k['split']}: {r['kl']:.4f}, top1 {r['top1']:.4f}, e_mean {r['e_mean']:.4f}")
         for m in ev.get("mmlu", []):
-            items = MM.build_items(m["lang"], m.get("split", "dev"), m.get("n"))
+            slot = use(m)
+            split = m.get("split", "dev")
+            items = MM.build_items(m["lang"], split, m.get("n"))
             recs = MM.score(model, tok, items, int(m.get("batch_size", 16)))
             s = MM.summarize(recs)
-            out[f"mmlu/{m['lang']}/{m.get('split', 'dev')}"] = {k: v for k, v in s.items() if k != "per_subject"} | {
-                "per_subject": s["per_subject"]}
-            with gzip.open(d / f"mmlu_{cond}_{m['lang']}_{m.get('split', 'dev')}.jsonl.gz", "wt") as f:
+            out[f"mmlu/{m['lang']}/{split}{_tag(m)}"] = s | {"slot": slot}
+            with gzip.open(d / f"mmlu_{cond}_{m['lang']}_{split}{_tag(m).replace('@', '_')}.jsonl.gz", "wt") as f:
                 for r in recs:
                     f.write(json.dumps(r) + "\n")
-            log(f"  [{cond}] Global-MMLU {m['lang']}/{m.get('split', 'dev')}: acc {s['acc']:.4f} (n={s['n']})")
+            log(f"  [{cond}|{slot}] Global-MMLU {m['lang']}/{split}: acc {s['acc']:.4f} (n={s['n']})")
         if ev.get("rublimp"):
             rb = ev["rublimp"]
+            slot = use(rb)
             r = RB.evaluate(model, tok, rb.get("subsample", "rublimp_sub200"), int(rb.get("batch_size", 32)),
                             rb.get("n_per"))  # fmt: skip
-            out["rublimp"] = r
-            log(f"  [{cond}] RuBLiMP ({rb.get('subsample')}, n_per={rb.get('n_per')}): {r['acc']:.4f}")
+            out[f"rublimp{_tag(rb)}"] = r | {"slot": slot}
+            log(f"  [{cond}|{slot}] RuBLiMP ({rb.get('subsample')}, n_per={rb.get('n_per')}): {r['acc']:.4f}")
+    if corrected:
+        C.set_lang(model, lang)
     record(cfg, "eval", out, t.seconds, cond=cond, lang=lang)
     return out

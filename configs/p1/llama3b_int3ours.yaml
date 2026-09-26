@@ -1,0 +1,9 @@
+# INT3-ours with LCD's settings, cross-checked against INT3-LCD: perplexities, KL on val, MMLU dev only.
+inherit: llama3b.yaml
+base: {kind: gptq-ours}
+eval:
+  kl: [{split: val_ru_64}]
+  mmlu:
+    - {lang: ru, split: dev, batch_size: 16}
+    - {lang: en, split: dev, batch_size: 16}
+  rublimp: null

@@ -1,0 +1,3 @@
+inherit: _base.yaml
+model: unsloth/Llama-3.2-3B   # = meta-llama/Llama-3.2-3B weights (Meta declined access; see CHANGELOG)
+base_ours: {name: int3ours-llama3.2-3b-calib_en_128}

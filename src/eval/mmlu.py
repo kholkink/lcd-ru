@@ -63,7 +63,8 @@ def score(model, tok, items: list[dict], batch_size: int = 16, max_len: int = 20
             ids[r, T - len(enc[i]) :] = torch.tensor(enc[i])
             mask[r, T - len(enc[i]) :] = 1
         pos = (mask.cumsum(1) - 1).clamp(min=0)
-        logits = model(input_ids=ids.to(dev), attention_mask=mask.to(dev), position_ids=pos.to(dev)).logits[:, -1]
+        logits = model(input_ids=ids.to(dev), attention_mask=mask.to(dev), position_ids=pos.to(dev),
+                       logits_to_keep=1).logits[:, -1]  # only the last position goes through lm_head
         lp = torch.log_softmax(logits.float(), dim=-1)[:, opts].cpu()
         for r, i in enumerate(idx):
             it = items[i]
