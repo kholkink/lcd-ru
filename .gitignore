@@ -1,12 +1,46 @@
+# Python / tooling
 .venv/
 __pycache__/
 *.pyc
 .pytest_cache/
+.ipynb_checkpoints/
+.mypy_cache/
+.ruff_cache/
+.idea/
+.vscode/
+.DS_Store
+*:Zone.Identifier
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Local queue state, run outputs, caches (large; live in private Kaggle datasets)
 build/
-data/texts/
 runs/
 cache/
-*.pt
-*.safetensors
-.env
+data/texts/
 results/items/
+*.log
+
+# Weights, checkpoints, archives, array dumps
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+*.gguf
+*.onnx
+*.npy
+*.npz
+*.parquet
+*.arrow
+*.zip
+*.tar
+*.tar.gz
+*.jsonl.gz
+
+# Third-party paper (CC BY 4.0, linked from ref/lcd/README.md instead of redistributed)
+ref/lcd/paper.pdf
+ref/lcd/paper.txt
